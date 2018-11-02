@@ -2,11 +2,92 @@
 extensions [ sound ]
 
 to setup
-user-message "no error at all!!!"
+  ca
+  reset-ticks
+  user-message "no error at all!!!"
   user-message "there is no VIRUS in your computer "
   user-message "when you are reading this,"
-    user-message " however,30000000$ has been removed from your bank acount"
+    user-message " however,$300,000,000 has been removed from your bank acount"
     user-message "Muahaha !!!"
+    user-message "transfering $300,000,000 to kevin's account..."
+  user-message "transfer complete!"
+  crt 5
+  ask turtles [ set shape "money_gone" ]
+  ask turtles [ set size 10 ]
+  ask turtles [ set ycor -15 ]
+  ask turtles [ set xcor random-xcor ]
+  ask turtles [ facexy xcor 20 ]
+  ask turtles [ fd 1 ]
+  tick
+    ask turtles [ fd 1 ]
+  tick
+    ask turtles [ fd 1 ]
+  tick
+    ask turtles [ fd 1 ]
+  tick
+    ask turtles [ fd 1 ]
+  tick
+    ask turtles [ fd 1 ]
+  tick
+    ask turtles [ fd 1 ]
+  tick
+    ask turtles [ fd 1 ]
+  tick
+    ask turtles [ fd 1 ]
+  tick
+    ask turtles [ fd 1 ]
+  tick
+    ask turtles [ fd 1 ]
+  tick
+    ask turtles [ fd 1 ]
+  tick
+    ask turtles [ fd 1 ]
+  tick
+    ask turtles [ fd 1 ]
+  tick
+    ask turtles [ fd 1 ]
+  tick
+    ask turtles [ fd 1 ]
+  tick
+    ask turtles [ fd 1 ]
+  tick
+    ask turtles [ fd 1 ]
+  tick
+    ask turtles [ fd 1 ]
+  tick
+    ask turtles [ fd 1 ]
+  tick
+    ask turtles [ fd 1 ]
+  tick
+    ask turtles [ fd 1 ]
+  tick
+    ask turtles [ fd 1 ]
+  tick
+    ask turtles [ fd 1 ]
+  tick
+    ask turtles [ fd 1 ]
+  tick
+    ask turtles [ fd 1 ]
+  tick
+    ask turtles [ fd 1 ]
+  tick
+    ask turtles [ fd 1 ]
+  tick
+    ask turtles [ fd 1 ]
+  tick
+    ask turtles [ fd 1 ]
+  tick
+    ask turtles [ fd 1 ]
+  tick
+    ask turtles [ fd 1 ]
+  tick
+      ask turtles [ fd 1 ]
+  tick
+    ask turtles [ fd 1 ]
+  tick
+    ask turtles [ fd 1 ]
+  tick
+  ask turtles [die]
 end
 
 ; draws the boundaries (walls) of the "billiard table"
@@ -27,10 +108,92 @@ to randomize
 end
 
 to go
-  user-message "there is a VIRUS in your computer "
-  user-message "when you are reading this"
-    user-message "30000000$ has been removed from your bank acount"
+  ca
+  reset-ticks
+  user-message "no error at all!!!"
+  user-message "there is no VIRUS in your computer "
+  user-message "when you are reading this,"
+    user-message " however,$300,000,000 has been removed from your bank acount"
     user-message "Muahaha !!!"
+    user-message "transfering $300,000,000 to kevin's account..."
+  user-message "transfer complete!"
+  crt 5
+  ask turtles [ set shape "money_gone" ]
+  ask turtles [ set size 10 ]
+  ask turtles [ set ycor -15 ]
+  ask turtles [ set xcor random-xcor ]
+  ask turtles [ facexy xcor 20 ]
+  ask turtles [ fd 1 ]
+  tick
+    ask turtles [ fd 1 ]
+  tick
+    ask turtles [ fd 1 ]
+  tick
+    ask turtles [ fd 1 ]
+  tick
+    ask turtles [ fd 1 ]
+  tick
+    ask turtles [ fd 1 ]
+  tick
+    ask turtles [ fd 1 ]
+  tick
+    ask turtles [ fd 1 ]
+  tick
+    ask turtles [ fd 1 ]
+  tick
+    ask turtles [ fd 1 ]
+  tick
+    ask turtles [ fd 1 ]
+  tick
+    ask turtles [ fd 1 ]
+  tick
+    ask turtles [ fd 1 ]
+  tick
+    ask turtles [ fd 1 ]
+  tick
+    ask turtles [ fd 1 ]
+  tick
+    ask turtles [ fd 1 ]
+  tick
+    ask turtles [ fd 1 ]
+  tick
+    ask turtles [ fd 1 ]
+  tick
+    ask turtles [ fd 1 ]
+  tick
+    ask turtles [ fd 1 ]
+  tick
+    ask turtles [ fd 1 ]
+  tick
+    ask turtles [ fd 1 ]
+  tick
+    ask turtles [ fd 1 ]
+  tick
+    ask turtles [ fd 1 ]
+  tick
+    ask turtles [ fd 1 ]
+  tick
+    ask turtles [ fd 1 ]
+  tick
+    ask turtles [ fd 1 ]
+  tick
+    ask turtles [ fd 1 ]
+  tick
+    ask turtles [ fd 1 ]
+  tick
+    ask turtles [ fd 1 ]
+  tick
+    ask turtles [ fd 1 ]
+  tick
+    ask turtles [ fd 1 ]
+  tick
+      ask turtles [ fd 1 ]
+  tick
+    ask turtles [ fd 1 ]
+  tick
+    ask turtles [ fd 1 ]
+  tick
+  ask turtles [die]
 end
 
 ;; this procedure checks the coordinates and makes the turtles
@@ -110,7 +273,7 @@ BUTTON
 84
 go
 go
-T
+NIL
 1
 T
 OBSERVER
@@ -155,23 +318,6 @@ instrument
 instrument
 "Marimba" "Flute" "Trumpet" "Chiff" "Xylophone" "Calliope"
 5
-
-BUTTON
-559
-85
-626
-119
-NIL
-setup
-NIL
-1
-T
-OBSERVER
-NIL
-NIL
-NIL
-NIL
-1
 
 @#$#@#$#@
 ## WHAT IS IT?
@@ -346,6 +492,16 @@ true
 0
 Line -7500403 true 150 0 150 150
 
+money_gone
+true
+0
+Line -10899396 false 180 105 120 135
+Line -10899396 false 120 135 180 165
+Line -10899396 false 180 165 120 195
+Line -10899396 false 150 90 150 210
+Polygon -1 true false 120 105 60 75 75 120 120 135 120 105
+Polygon -1 true false 180 105 240 75 225 120 180 135
+
 pentagon
 false
 0
@@ -462,7 +618,7 @@ false
 Polygon -7500403 true true 270 75 225 30 30 225 75 270
 Polygon -7500403 true true 30 75 75 30 270 225 225 270
 @#$#@#$#@
-NetLogo 6.0
+NetLogo 6.0.4
 @#$#@#$#@
 setup
 set leave-trace? true
