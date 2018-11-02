@@ -65,13 +65,13 @@ end
 ; copyright and related or neighboring rights to this model.
 @#$#@#$#@
 GRAPHICS-WINDOW
-265
-23
-738
-497
+175
+10
+511
+347
 -1
 -1
-11.3415
+8.0
 1
 10
 1
@@ -132,14 +132,14 @@ SWITCH
 138
 leave-trace?
 leave-trace?
-0
+1
 1
 -1000
 
 SLIDER
 67
 152
-100
+104
 302
 pitchLevel
 pitchLevel
@@ -158,61 +158,6 @@ CHOOSER
 352
 instrument
 instrument
-<<<<<<< HEAD
-"Marimba" "Flute" "Trumpet" "Chiff" "Xylophone" "Calliope"
-1
-
-BUTTON
-20
-359
-114
-392
-reddening
-ask turtles [set color red]
-NIL
-1
-T
-OBSERVER
-NIL
-NIL
-NIL
-NIL
-1
-
-BUTTON
-20
-396
-114
-429
-turtle
-ask turtles [set shape \"turtle\"]\n
-NIL
-1
-T
-OBSERVER
-NIL
-NIL
-NIL
-NIL
-1
-
-BUTTON
-788
-61
-992
-94
-NIL
-ask turtles [set size 5]
-NIL
-1
-T
-OBSERVER
-NIL
-NIL
-NIL
-NIL
-1
-=======
 "Marimba" "Flute" "Trumpet" "Xylophone" "Calliope"
 1
 
@@ -245,7 +190,6 @@ y
 1
 NIL
 HORIZONTAL
->>>>>>> 59d8c0ac21790985c6b4be7ffc05188a3b088e19
 
 @#$#@#$#@
 ## WHAT IS IT?
@@ -536,7 +480,7 @@ false
 Polygon -7500403 true true 270 75 225 30 30 225 75 270
 Polygon -7500403 true true 30 75 75 30 270 225 225 270
 @#$#@#$#@
-NetLogo 6.0
+NetLogo 6.0.4
 @#$#@#$#@
 setup
 set leave-trace? true
