@@ -46,6 +46,7 @@ to bounce  ;; turtle procedure
   if abs [pxcor] of patch-ahead 0.1 = max-pxcor
     ; if so, reflect heading around x axis
   [
+
     ask patch-ahead 1 [set pcolor green]
     sound:play-note instrument  (40 + pycor) (pitchLevel + 64) 2
     ;; sound:play-drum "Splash Cymbal" 64
