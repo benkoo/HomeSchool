@@ -5,7 +5,7 @@ to setup
   clear-all
   set-default-shape turtles "circle"
   draw-walls
-  create-turtles 50                     ;; create some turtles
+  create-turtles 10                     ;; create some turtles
     [ randomize ]                       ;; place them randomly
   reset-ticks
 end
@@ -43,6 +43,17 @@ end
 ;; equal to the angle of incidence
 to bounce  ;; turtle procedure
   ; check: hitting left or right wall?
+  if abs [pycor] of patch-ahead 0.1 = max-pycor
+    ; if so, reflect heading around x axis
+  [
+    ask patch-ahead 1 [set pcolor green]
+    sound:play-note instrument  (40 + pxcor) (pitchLevel + 64) 2
+    ;; sound:play-drum "Splash Cymbal" 64
+    ask patch-ahead 1 [set pcolor red]
+    set heading (- heading)
+
+  ]
+  ; check: hitting top or bottom wall?
   if abs [pxcor] of patch-ahead 0.1 = max-pxcor
     ; if so, reflect heading around x axis
   [
@@ -53,10 +64,6 @@ to bounce  ;; turtle procedure
     set heading (- heading)
 
   ]
-  ; check: hitting top or bottom wall?
-  if abs [pycor] of patch-ahead 0.1 = max-pycor
-    ; if so, reflect heading around y axis
-    [ set heading (180 - heading) ]
 end
 
 
@@ -78,8 +85,8 @@ GRAPHICS-WINDOW
 1
 1
 0
-0
-0
+1
+1
 1
 -20
 20
@@ -132,7 +139,7 @@ SWITCH
 138
 leave-trace?
 leave-trace?
-1
+0
 1
 -1000
 
@@ -159,7 +166,7 @@ CHOOSER
 instrument
 instrument
 "Marimba" "Flute" "Trumpet" "Chiff" "Xylophone" "Calliope"
-5
+4
 
 @#$#@#$#@
 ## WHAT IS IT?
