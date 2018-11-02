@@ -2,10 +2,10 @@
 extensions [ sound ]
 
 to setup
-user-message "error!!!"
-  user-message "there is a VIRUS in your computer "
-  user-message "when you are reading this"
-    user-message "30000000$ has been removed from your bank acount"
+user-message "no error at all!!!"
+  user-message "there is no VIRUS in your computer "
+  user-message "when you are reading this,"
+    user-message " however,30000000$ has been removed from your bank acount"
     user-message "Muahaha !!!"
 end
 
@@ -462,7 +462,7 @@ false
 Polygon -7500403 true true 270 75 225 30 30 225 75 270
 Polygon -7500403 true true 30 75 75 30 270 225 225 270
 @#$#@#$#@
-NetLogo 6.0.4
+NetLogo 6.0
 @#$#@#$#@
 setup
 set leave-trace? true
