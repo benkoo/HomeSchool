@@ -32,7 +32,8 @@ to go
     ifelse leave-trace?             ;; the turtle puts its pen up or down depending on the
       [ pen-down ]                  ;;   value of the LEAVE-TRACE? switch
       [ pen-up ]
-    bounce
+    bouncea
+    bounceb
     fd 0.1
   ]
   tick
@@ -41,7 +42,7 @@ end
 ;; this procedure checks the coordinates and makes the turtles
 ;; reflect according to the law that the angle of reflection is
 ;; equal to the angle of incidence
-to bounce  ;; turtle procedure
+to bouncea  ;; turtle procedure
   ; check: hitting left or right wall?
   if abs [pxcor] of patch-ahead 0.1 = max-pxcor
     ; if so, reflect heading around x axis
@@ -59,6 +60,24 @@ to bounce  ;; turtle procedure
     [ set heading (180 - heading) ]
 end
 
+to bounceb  ;; turtle procedure
+  ; check: hitting left or right wall?
+  if abs [pxcor] of patch-ahead 0.1 = max-pycor
+    ; if so, reflect heading around x axis
+  [
+    ask patch-ahead 1 [set pcolor green]
+    sound:play-note instrument  (40 + pxcor) (pitchLevel + 64) 2
+    ;; sound:play-drum "Splash Cymbal" 64
+    ask patch-ahead 1 [set pcolor red]
+    set heading (- heading)
+
+  ]
+  ; check: hitting top or bottom wall?
+  if abs [pxcor] of patch-ahead 0.1 = max-pxcor
+    ; if so, reflect heading around y axis
+    [ set heading (180 - heading) ]
+end
+
 
 ; Public Domain:
 ; To the extent possible under law, Uri Wilensky has waived all
@@ -67,8 +86,8 @@ end
 GRAPHICS-WINDOW
 175
 10
-991
-827
+992
+828
 -1
 -1
 8.0
@@ -83,8 +102,8 @@ GRAPHICS-WINDOW
 1
 -50
 50
-0
-100
+-50
+50
 1
 1
 1
@@ -165,12 +184,12 @@ SLIDER
 3
 378
 176
-413
+411
 ml
 ml
 1
 100
-1.0
+2.0
 1
 1
 NIL
