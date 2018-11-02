@@ -1,11 +1,11 @@
 ;;One must include the following line to ensure that we can use sound features.
 extensions [ sound ]
 
-to setupX
+to setup
   clear-all
   set-default-shape turtles "circle"
   draw-walls
-  create-turtles y                  ;; create some turtles
+  create-turtles ml                     ;; create some turtles
     [ randomize ]                       ;; place them randomly
   reset-ticks
 end
@@ -43,18 +43,18 @@ end
 ;; equal to the angle of incidence
 to bounce  ;; turtle procedure
   ; check: hitting left or right wall?
-  if abs [pycor] of patch-ahead 0.1 = max-pycor
+  if abs [pxcor] of patch-ahead 0.1 = max-pxcor
     ; if so, reflect heading around x axis
   [
     ask patch-ahead 1 [set pcolor green]
-    sound:play-drum "ACOUSTIC SNARE" 64
-    sound:play-note instrument  (40 + pxcor) (pitchLevel + 64) (5 * x / 100)
+    sound:play-note instrument  (40 + pycor) (pitchLevel + 64) 2
     ;; sound:play-drum "Splash Cymbal" 64
+    ask patch-ahead 1 [set pcolor red]
     set heading (- heading)
 
   ]
   ; check: hitting top or bottom wall?
-  if abs [pxcor] of patch-ahead 0.1 = max-pxcor
+  if abs [pycor] of patch-ahead 0.1 = max-pycor
     ; if so, reflect heading around y axis
     [ set heading (180 - heading) ]
 end
@@ -67,8 +67,8 @@ end
 GRAPHICS-WINDOW
 175
 10
-511
-347
+991
+827
 -1
 -1
 8.0
@@ -78,13 +78,13 @@ GRAPHICS-WINDOW
 1
 1
 0
+0
+0
 1
-1
-1
--20
-20
--20
-20
+-50
+50
+0
+100
 1
 1
 1
@@ -93,11 +93,11 @@ ticks
 
 BUTTON
 17
-15
-125
-48
-设定初始状态
-setupX
+51
+75
+84
+NIL
+setup
 NIL
 1
 T
@@ -109,11 +109,11 @@ NIL
 1
 
 BUTTON
-35
-59
-98
-92
-开始
+88
+51
+143
+84
+go
 go
 T
 1
@@ -132,7 +132,7 @@ SWITCH
 138
 leave-trace?
 leave-trace?
-1
+0
 1
 -1000
 
@@ -145,7 +145,7 @@ pitchLevel
 pitchLevel
 0
 100
-0.0
+78.0
 1
 1
 NIL
@@ -158,34 +158,19 @@ CHOOSER
 352
 instrument
 instrument
-"Marimba" "Flute" "Trumpet" "Xylophone" "Calliope"
-1
-
-SLIDER
-149
-381
-321
-414
-x
-x
+"Marimba" "Flute" "Trumpet" "Chiff" "Xylophone" "Calliope" "violin"
 0
-100
-22.0
-1
-1
-NIL
-HORIZONTAL
 
 SLIDER
-560
-72
-732
-105
-y
-y
+3
+378
+176
+413
+ml
+ml
 1
-10
-7.0
+100
+1.0
 1
 1
 NIL

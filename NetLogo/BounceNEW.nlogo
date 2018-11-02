@@ -139,7 +139,7 @@ leave-trace?
 SLIDER
 67
 152
-100
+104
 302
 pitchLevel
 pitchLevel
