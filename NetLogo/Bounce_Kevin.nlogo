@@ -5,7 +5,7 @@ to setup
   clear-all
   set-default-shape turtles "circle"
   draw-walls
-  create-turtles 10                     ;; create some turtles
+  create-turtles 50                     ;; create some turtles
     [ randomize ]                       ;; place them randomly
   reset-ticks
 end
