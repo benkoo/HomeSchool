@@ -15,12 +15,12 @@ to setup
   reset-ticks
   set die? false
   set score 0
-  create-mes 1 [ set shape "person" set size 3 set color red ]
+  create-mes 1 [ set shape "person" set size 5 set color red ]
 end
 
 to go
   start
-  create-enemyis (random enemy - 1) + 1 [ setxy random-xcor 20 set heading 180 ]
+  create-enemyis (random enemy - 1) + 1 [ setxy random-xcor 20 set size 2 set heading 180 ]
   repeat 40000 / enemy_speed [  if die? [ ca stop ] dy? mv_person fall ]
   ask enemyis [ die ]
 end
@@ -127,7 +127,7 @@ enemy_speed
 enemy_speed
 1
 3
-3.0
+2.0
 1
 1
 NIL
