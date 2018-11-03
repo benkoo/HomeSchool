@@ -3,6 +3,13 @@ breed [ enemyis enemyi ]
 
 globals [ die? ]
 
+to instruction
+  user-message "use mouse to move"
+  user-message "avoid the spikes"
+  user-message "click setup to load"
+  user-message "click go to start"
+end
+
 to setup
   clear-all
   reset-ticks
@@ -17,6 +24,46 @@ to go
   if any? enemyis-here  [ user-message "Game Over !" set die? true]
   ]
   ask enemyis [ fd enemy_speed * 0.01 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.01 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.01 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.01 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.01 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.01 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.01 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.01 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.01 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.01 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.01 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.01 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.01 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.01 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.01 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.01 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.01 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.01 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.01 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.01 ]
+  tick
+    ask enemyis [ fd enemy_speed * 0.01 ]
   tick
   ask enemyis [ fd enemy_speed * 0.01 ]
   tick
@@ -88,10 +135,10 @@ ticks
 30.0
 
 BUTTON
-41
-164
-111
-197
+42
+185
+112
+218
 set up
 setup
 NIL
@@ -105,10 +152,10 @@ NIL
 1
 
 SLIDER
-20
-198
-192
-231
+21
+219
+193
+252
 enemy
 enemy
 1
@@ -120,10 +167,10 @@ NIL
 HORIZONTAL
 
 BUTTON
-111
-164
-174
-197
+112
+185
+175
+218
 go
 go
 T
@@ -137,10 +184,10 @@ NIL
 1
 
 SLIDER
-20
-230
-192
-263
+21
+251
+193
+284
 enemy_speed
 enemy_speed
 1
@@ -150,6 +197,23 @@ enemy_speed
 1
 NIL
 HORIZONTAL
+
+BUTTON
+61
+151
+161
+184
+instruction
+instruction
+NIL
+1
+T
+OBSERVER
+NIL
+NIL
+NIL
+NIL
+1
 
 @#$#@#$#@
 ## WHAT IS IT?
