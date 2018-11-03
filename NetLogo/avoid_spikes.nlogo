@@ -1,7 +1,7 @@
 breed [ mes me ]
 breed [ enemyis enemyi ]
 
-globals [ die? ]
+globals [ die? score start? ]
 
 to instruction
   user-message "use mouse to move"
@@ -14,6 +14,8 @@ to setup
   clear-all
   reset-ticks
   set die? false
+  set start? false
+  set score 0
   create-mes 1 [ set shape "person" set size 3 set color red ]
   create-enemyis enemy [ setxy random-xcor random-ycor facexy random-xcor random-ycor ]
 end
@@ -21,90 +23,495 @@ end
 to go
   if die? [ ca stop ]
   ask mes [ setxy mouse-xcor mouse-ycor
-  if any? enemyis-here  [ user-message "Game Over !" set die? true]
+  if any? enemyis-here  [ user-message "Game Over !" user-message word "your score: " score set die? true]
   ]
-  ask enemyis [ fd enemy_speed * 0.01 ]
+  ask enemyis [ fd enemy_speed * 0.001 ]
   tick
-  ask enemyis [ fd enemy_speed * 0.01 ]
+  ask enemyis [ fd enemy_speed * 0.001 ]
   tick
-  ask enemyis [ fd enemy_speed * 0.01 ]
+  ask enemyis [ fd enemy_speed * 0.001 ]
   tick
-  ask enemyis [ fd enemy_speed * 0.01 ]
+  ask enemyis [ fd enemy_speed * 0.001 ]
   tick
-  ask enemyis [ fd enemy_speed * 0.01 ]
+  ask enemyis [ fd enemy_speed * 0.001 ]
   tick
-  ask enemyis [ fd enemy_speed * 0.01 ]
+  ask enemyis [ fd enemy_speed * 0.001 ]
   tick
-  ask enemyis [ fd enemy_speed * 0.01 ]
+  ask enemyis [ fd enemy_speed * 0.001 ]
   tick
-  ask enemyis [ fd enemy_speed * 0.01 ]
+  ask enemyis [ fd enemy_speed * 0.001 ]
   tick
-  ask enemyis [ fd enemy_speed * 0.01 ]
+  ask enemyis [ fd enemy_speed * 0.001 ]
   tick
-  ask enemyis [ fd enemy_speed * 0.01 ]
+  ask enemyis [ fd enemy_speed * 0.001 ]
   tick
-  ask enemyis [ fd enemy_speed * 0.01 ]
+  ask enemyis [ fd enemy_speed * 0.001 ]
   tick
-  ask enemyis [ fd enemy_speed * 0.01 ]
+  ask enemyis [ fd enemy_speed * 0.001 ]
   tick
-  ask enemyis [ fd enemy_speed * 0.01 ]
+  ask enemyis [ fd enemy_speed * 0.001 ]
   tick
-  ask enemyis [ fd enemy_speed * 0.01 ]
+  ask enemyis [ fd enemy_speed * 0.001 ]
   tick
-  ask enemyis [ fd enemy_speed * 0.01 ]
+  ask enemyis [ fd enemy_speed * 0.001 ]
   tick
-  ask enemyis [ fd enemy_speed * 0.01 ]
+  ask enemyis [ fd enemy_speed * 0.001 ]
   tick
-  ask enemyis [ fd enemy_speed * 0.01 ]
+  ask enemyis [ fd enemy_speed * 0.001 ]
   tick
-  ask enemyis [ fd enemy_speed * 0.01 ]
+  ask enemyis [ fd enemy_speed * 0.001 ]
   tick
-  ask enemyis [ fd enemy_speed * 0.01 ]
+  ask enemyis [ fd enemy_speed * 0.001 ]
   tick
-  ask enemyis [ fd enemy_speed * 0.01 ]
+  ask enemyis [ fd enemy_speed * 0.001 ]
   tick
-    ask enemyis [ fd enemy_speed * 0.01 ]
+  ask enemyis [ fd enemy_speed * 0.001 ]
   tick
-  ask enemyis [ fd enemy_speed * 0.01 ]
+  ask enemyis [ fd enemy_speed * 0.001 ]
   tick
-  ask enemyis [ fd enemy_speed * 0.01 ]
+  ask enemyis [ fd enemy_speed * 0.001 ]
   tick
-  ask enemyis [ fd enemy_speed * 0.01 ]
+  ask enemyis [ fd enemy_speed * 0.001 ]
   tick
-  ask enemyis [ fd enemy_speed * 0.01 ]
+  ask enemyis [ fd enemy_speed * 0.001 ]
   tick
-  ask enemyis [ fd enemy_speed * 0.01 ]
+  ask enemyis [ fd enemy_speed * 0.001 ]
   tick
-  ask enemyis [ fd enemy_speed * 0.01 ]
+  ask enemyis [ fd enemy_speed * 0.001 ]
   tick
-  ask enemyis [ fd enemy_speed * 0.01 ]
+  ask enemyis [ fd enemy_speed * 0.001 ]
   tick
-  ask enemyis [ fd enemy_speed * 0.01 ]
+  ask enemyis [ fd enemy_speed * 0.001 ]
   tick
-  ask enemyis [ fd enemy_speed * 0.01 ]
+  ask enemyis [ fd enemy_speed * 0.001 ]
   tick
-  ask enemyis [ fd enemy_speed * 0.01 ]
+  ask enemyis [ fd enemy_speed * 0.001 ]
   tick
-  ask enemyis [ fd enemy_speed * 0.01 ]
+  ask enemyis [ fd enemy_speed * 0.001 ]
   tick
-  ask enemyis [ fd enemy_speed * 0.01 ]
+  ask enemyis [ fd enemy_speed * 0.001 ]
   tick
-  ask enemyis [ fd enemy_speed * 0.01 ]
+  ask enemyis [ fd enemy_speed * 0.001 ]
   tick
-  ask enemyis [ fd enemy_speed * 0.01 ]
+  ask enemyis [ fd enemy_speed * 0.001 ]
   tick
-  ask enemyis [ fd enemy_speed * 0.01 ]
+  ask enemyis [ fd enemy_speed * 0.001 ]
   tick
-  ask enemyis [ fd enemy_speed * 0.01 ]
+  ask enemyis [ fd enemy_speed * 0.001 ]
   tick
-  ask enemyis [ fd enemy_speed * 0.01 ]
+  ask enemyis [ fd enemy_speed * 0.001 ]
   tick
-  ask enemyis [ fd enemy_speed * 0.01 ]
+  ask enemyis [ fd enemy_speed * 0.001 ]
   tick
-  ask enemyis [ fd enemy_speed * 0.01 ]
+  ask enemyis [ fd enemy_speed * 0.001 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.001 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.001 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.001 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.001 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.001 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.001 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.001 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.001 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.001 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.001 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.001 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.001 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.001 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.001 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.001 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.001 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.001 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.001 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.001 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.001 ]
+  tick
+    ask enemyis [ fd enemy_speed * 0.001 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.001 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.001 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.001 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.001 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.001 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.001 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.001 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.001 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.001 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.001 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.001 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.001 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.001 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.001 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.001 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.001 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.001 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.001 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.001 ]
+  tick
+    ask enemyis [ fd enemy_speed * 0.001 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.001 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.001 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.001 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.001 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.001 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.001 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.001 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.001 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.001 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.001 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.001 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.001 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.001 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.001 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.001 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.001 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.001 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.001 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.001 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.001 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.001 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.001 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.001 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.001 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.001 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.001 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.001 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.001 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.001 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.001 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.001 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.001 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.001 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.001 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.001 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.001 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.001 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.001 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.001 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.001 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.001 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.001 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.001 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.001 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.001 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.001 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.001 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.001 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.001 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.001 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.001 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.001 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.001 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.001 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.001 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.001 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.001 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.001 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.001 ]
+  tick
+    ask enemyis [ fd enemy_speed * 0.001 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.001 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.001 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.001 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.001 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.001 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.001 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.001 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.001 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.001 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.001 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.001 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.001 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.001 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.001 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.001 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.001 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.001 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.001 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.001 ]
+  tick
+    ask enemyis [ fd enemy_speed * 0.001 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.001 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.001 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.001 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.001 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.001 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.001 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.001 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.001 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.001 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.001 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.001 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.001 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.001 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.001 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.001 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.001 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.001 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.001 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.001 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.001 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.001 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.001 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.001 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.001 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.001 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.001 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.001 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.001 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.001 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.001 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.001 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.001 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.001 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.001 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.001 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.001 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.001 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.001 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.001 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.001 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.001 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.001 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.001 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.001 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.001 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.001 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.001 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.001 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.001 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.001 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.001 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.001 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.001 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.001 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.001 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.001 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.001 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.001 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.001 ]
+  tick
+    ask enemyis [ fd enemy_speed * 0.001 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.001 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.001 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.001 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.001 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.001 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.001 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.001 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.001 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.001 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.001 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.001 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.001 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.001 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.001 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.001 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.001 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.001 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.001 ]
+  tick
+  ask enemyis [ fd enemy_speed * 0.001 ]
   tick
   ask enemyis [ facexy random-xcor random-ycor ]
+  if not start? [ start ]
   tick
+end
+
+to start
+  every 1 [ set score score + 1]
 end
 @#$#@#$#@
 GRAPHICS-WINDOW
@@ -158,9 +565,9 @@ SLIDER
 252
 enemy
 enemy
-1
-5
-3.0
+10
+50
+40.0
 1
 1
 NIL
@@ -214,6 +621,17 @@ NIL
 NIL
 NIL
 1
+
+MONITOR
+62
+371
+120
+432
+score
+score
+17
+1
+15
 
 @#$#@#$#@
 ## WHAT IS IT?
