@@ -35,13 +35,12 @@ to fall
 end
 
 to mv_person
-  ask mes [ setxy mouse-xcor -10 ]
+  ask mes [ setxy mouse-xcor -17 ]
 end
 
 to dy?
   ask mes [ if any? enemyis-here  [ user-message "Game Over !" user-message word "your score: " score set die? true ] ]
 end
-
 @#$#@#$#@
 GRAPHICS-WINDOW
 210
@@ -152,10 +151,10 @@ NIL
 1
 
 MONITOR
-62
-371
-120
-432
+75
+284
+133
+345
 score
 score
 17
