@@ -21,7 +21,7 @@ end
 to go
   start
   create-enemyis (random enemy - 1) + 1 [ setxy random-xcor 20 set heading 180 ]
-  repeat 40000 [  if die? [ ca stop ] dy? mv_person fall ]
+  repeat 40000 / enemy_speed [  if die? [ ca stop ] dy? mv_person fall ]
   ask enemyis [ die ]
 end
 
@@ -127,7 +127,7 @@ enemy_speed
 enemy_speed
 1
 3
-1.0
+3.0
 1
 1
 NIL
