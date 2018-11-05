@@ -1,11 +1,13 @@
 breed [ bowls bowl ]
 breed [ apples apple ]
+breed [ bugs bug ]
 
-globals [ die? score ]
+globals [ die? score catch? ]
 
 to instruction
   user-message "use mouse to move"
-  user-message "avoid the spikes"
+  user-message "catch apples"
+  user-message "avoid the bugs"
   user-message "click setup to load"
   user-message "click go to start"
 end
@@ -15,31 +17,38 @@ to setup
   reset-ticks
   set die? false
   set score 0
-  create-mes 1 [ set shape "person" set size 5 set color red ]
+  create-bowls 1 [ set shape "bowl" set size 10 set color red facexy xcor 20]
 end
 
 to go
-  start
-  create-enemyis (random enemy - 1) + 1 [ setxy random-xcor 20 set size 2 set heading 180 ]
-  repeat 40000 / enemy_speed [  if die? [ ca stop ] dy? mv_person fall ]
-  ask enemyis [ die ]
-end
-
-to start
-   every 1 [ set score score + 1]
+  crb
+  cra
+  repeat 40000 / speed [  if die? [ ca stop ] dy? mv_person fall ]
+  ask bugs [ die ]
+  ask apples [ die ]
 end
 
 to fall
-  ask enemyis [ fd 0.001 * enemy_speed ]
+  ask bugs [ fd 0.001 * speed ]
+  ask apples [ fd 0.001 * speed ]
   tick
 end
 
 to mv_person
-  ask mes [ setxy mouse-xcor -17 ]
+  ask bowls [ setxy mouse-xcor -17 ]
 end
 
 to dy?
-  ask mes [ if any? enemyis-here  [ user-message "Game Over !" user-message word "your score: " score set die? true ] ]
+  ask bowls [ if any? bugs-here  [ user-message "Game Over !" user-message word "your score: " score set die? true ] ]
+  ask apples [ if any? bowls-here [ set score score + 1 die ] ]
+end
+
+to crb
+  every random 5 [ create-bugs (random bugs_number - 1) + 1 [ set shape "bug" set color blue setxy random-xcor 20 set size 2 set heading 180 ] ]
+end
+
+to cra
+  create-apples ( random 9 ) + 1 [ set shape "apple" set size 5 set heading 180 setxy random-xcor 20 ]
 end
 @#$#@#$#@
 GRAPHICS-WINDOW
@@ -91,11 +100,11 @@ SLIDER
 219
 193
 252
-enemy
-enemy
+bugs_number
+bugs_number
 1
 10
-7.0
+10.0
 1
 1
 NIL
@@ -123,11 +132,11 @@ SLIDER
 251
 193
 284
-enemy_speed
-enemy_speed
+speed
+speed
 1
 3
-2.0
+3.0
 1
 1
 NIL
@@ -223,7 +232,7 @@ true
 0
 Polygon -7500403 true true 150 0 0 150 105 150 105 293 195 293 195 150 300 150
 
-bowl'
+bowl
 true
 0
 Polygon -6459832 true false 105 150 135 135 165 135 195 150 165 165 135 165
