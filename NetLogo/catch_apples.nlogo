@@ -1,5 +1,5 @@
-breed [ mes me ]
-breed [ enemyis enemyi ]
+breed [ bowls bowl ]
+breed [ apples apple ]
 
 globals [ die? score ]
 
@@ -20,7 +20,7 @@ end
 
 to go
   start
-  create-enemyis (random (enemy - 1)) + 1 [ setxy random-xcor 20 set size 2 set heading 180 ]
+  create-enemyis (random enemy - 1) + 1 [ setxy random-xcor 20 set size 2 set heading 180 ]
   repeat 40000 / enemy_speed [  if die? [ ca stop ] dy? mv_person fall ]
   ask enemyis [ die ]
 end
@@ -40,11 +40,6 @@ end
 
 to dy?
   ask mes [ if any? enemyis-here  [ user-message "Game Over !" user-message word "your score: " score set die? true ] ]
-end
-
-to cheat
-  user-message "hun, you wanna cheat hun?"
-  user-message "No Way! go back to you game!"
 end
 @#$#@#$#@
 GRAPHICS-WINDOW
@@ -100,7 +95,7 @@ enemy
 enemy
 1
 10
-4.0
+7.0
 1
 1
 NIL
@@ -132,7 +127,7 @@ enemy_speed
 enemy_speed
 1
 3
-3.0
+2.0
 1
 1
 NIL
@@ -165,23 +160,6 @@ score
 17
 1
 15
-
-BUTTON
-156
-361
-221
-394
-cheat
-cheat
-NIL
-1
-T
-OBSERVER
-NIL
-NIL
-NIL
-NIL
-1
 
 @#$#@#$#@
 ## WHAT IS IT?
@@ -230,10 +208,29 @@ true
 0
 Polygon -7500403 true true 150 0 135 15 120 60 120 105 15 165 15 195 120 180 135 240 105 270 120 285 150 270 180 285 210 270 165 240 180 180 285 195 285 165 180 105 180 60 165 15
 
+apple
+true
+0
+Polygon -2674135 true false 150 120 135 90 105 90 75 135 90 195 135 225 150 210 165 225 210 195 225 135 165 90 195 90 225 135 165 90
+Line -10899396 false 150 60 150 120
+Polygon -10899396 true false 150 75 165 60 180 60 195 75 180 90 165 90
+Line -14835848 false 150 75 195 75
+Line -14835848 false 180 60 165 75
+Line -14835848 false 180 90 165 75
+
 arrow
 true
 0
 Polygon -7500403 true true 150 0 0 150 105 150 105 293 195 293 195 150 300 150
+
+bowl'
+true
+0
+Polygon -6459832 true false 105 150 135 135 165 135 195 150 165 165 135 165
+Polygon -6459832 true false 105 150 120 180 180 180 195 150
+Line -16777216 false 105 150 135 165
+Line -16777216 false 135 165 165 165
+Line -16777216 false 165 165 195 150
 
 box
 false
