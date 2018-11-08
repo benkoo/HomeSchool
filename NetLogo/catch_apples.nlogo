@@ -21,11 +21,7 @@ to setup
 end
 
 to go
-  crb
-  cra
-  repeat 40000 / speed [  if die? [ ca stop ] dy? mv_person fall ]
-  ask bugs [ die ]
-  ask apples [ die ]
+  repeat 40000 / speed [ if die? [ ca stop ] dy? ask apples [ if ycor = -20 [ ask apples [ die ] ] ] ask bugs [ if ycor = -20 [ ask bugs [ die ] ] ] crb cra mv_person fall ]
 end
 
 to fall
@@ -44,11 +40,11 @@ to dy?
 end
 
 to crb
-  every random 5 [ create-bugs (random bugs_number - 1) + 1 [ set shape "bug" set color blue setxy random-xcor 20 set size 2 set heading 180 ] ]
+  every random 50000 [ create-bugs (random bugs_number - 1) + 1 [ set shape "bug" set color blue setxy random-xcor 20 set size 2 set heading 180 ] ]
 end
 
 to cra
-  create-apples ( random 9 ) + 1 [ set shape "apple" set size 5 set heading 180 setxy random-xcor 20 ]
+  every random 20000 [create-apples ( random 4 ) + 1 [ set shape "apple" set size 5 set heading 180 setxy random-xcor 20 ] ]
 end
 @#$#@#$#@
 GRAPHICS-WINDOW
@@ -104,7 +100,7 @@ bugs_number
 bugs_number
 1
 10
-10.0
+9.0
 1
 1
 NIL
@@ -220,12 +216,12 @@ Polygon -7500403 true true 150 0 135 15 120 60 120 105 15 165 15 195 120 180 135
 apple
 true
 0
-Polygon -2674135 true false 150 120 135 90 105 90 75 135 90 195 135 225 150 210 165 225 210 195 225 135 165 90 195 90 225 135 165 90
-Line -10899396 false 150 60 150 120
-Polygon -10899396 true false 150 75 165 60 180 60 195 75 180 90 165 90
-Line -14835848 false 150 75 195 75
-Line -14835848 false 180 60 165 75
-Line -14835848 false 180 90 165 75
+Polygon -2674135 true false 150 180 165 210 195 210 225 165 210 105 165 75 150 90 135 75 90 105 75 165 135 210 105 210 75 165 135 210
+Line -10899396 false 150 240 150 180
+Polygon -10899396 true false 150 225 135 240 120 240 105 225 120 210 135 210
+Line -14835848 false 150 225 105 225
+Line -14835848 false 120 240 135 225
+Line -14835848 false 120 210 135 225
 
 arrow
 true
