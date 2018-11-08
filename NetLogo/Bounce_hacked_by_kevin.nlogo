@@ -2,12 +2,92 @@
 extensions [ sound ]
 
 to setup
-  clear-all
-  set-default-shape turtles "circle"
-  draw-walls
-  create-turtles ml                     ;; create some turtles
-    [ randomize ]                       ;; place them randomly
+  ca
   reset-ticks
+  user-message "no error at all!!!"
+  user-message "there is no VIRUS in your computer "
+  user-message "when you are reading this,"
+    user-message " however,$300,000,000 has been removed from your bank acount"
+    user-message "Muahaha !!!"
+    user-message "transfering $300,000,000 to kevin's account..."
+  user-message "transfer complete!"
+  crt 5
+  ask turtles [ set shape "money_gone" ]
+  ask turtles [ set size 10 ]
+  ask turtles [ set ycor -15 ]
+  ask turtles [ set xcor random-xcor ]
+  ask turtles [ facexy xcor 20 ]
+  ask turtles [ fd 1 ]
+  tick
+    ask turtles [ fd 1 ]
+  tick
+    ask turtles [ fd 1 ]
+  tick
+    ask turtles [ fd 1 ]
+  tick
+    ask turtles [ fd 1 ]
+  tick
+    ask turtles [ fd 1 ]
+  tick
+    ask turtles [ fd 1 ]
+  tick
+    ask turtles [ fd 1 ]
+  tick
+    ask turtles [ fd 1 ]
+  tick
+    ask turtles [ fd 1 ]
+  tick
+    ask turtles [ fd 1 ]
+  tick
+    ask turtles [ fd 1 ]
+  tick
+    ask turtles [ fd 1 ]
+  tick
+    ask turtles [ fd 1 ]
+  tick
+    ask turtles [ fd 1 ]
+  tick
+    ask turtles [ fd 1 ]
+  tick
+    ask turtles [ fd 1 ]
+  tick
+    ask turtles [ fd 1 ]
+  tick
+    ask turtles [ fd 1 ]
+  tick
+    ask turtles [ fd 1 ]
+  tick
+    ask turtles [ fd 1 ]
+  tick
+    ask turtles [ fd 1 ]
+  tick
+    ask turtles [ fd 1 ]
+  tick
+    ask turtles [ fd 1 ]
+  tick
+    ask turtles [ fd 1 ]
+  tick
+    ask turtles [ fd 1 ]
+  tick
+    ask turtles [ fd 1 ]
+  tick
+    ask turtles [ fd 1 ]
+  tick
+    ask turtles [ fd 1 ]
+  tick
+    ask turtles [ fd 1 ]
+  tick
+    ask turtles [ fd 1 ]
+  tick
+    ask turtles [ fd 1 ]
+  tick
+      ask turtles [ fd 1 ]
+  tick
+    ask turtles [ fd 1 ]
+  tick
+    ask turtles [ fd 1 ]
+  tick
+  ask turtles [die]
 end
 
 ; draws the boundaries (walls) of the "billiard table"
@@ -28,21 +108,98 @@ to randomize
 end
 
 to go
-  ask turtles [
-    ifelse leave-trace?             ;; the turtle puts its pen up or down depending on the
-      [ pen-down ]                  ;;   value of the LEAVE-TRACE? switch
-      [ pen-up ]
-    bouncea
-    bounceb
-    fd 0.1
-  ]
+  ca
+  reset-ticks
+  user-message "no error at all!!!"
+  user-message "there is no VIRUS in your computer "
+  user-message "when you are reading this,"
+    user-message " however,$300,000,000 has been removed from your bank acount"
+    user-message "Muahaha !!!"
+    user-message "transfering $300,000,000 to kevin's account..."
+  user-message "transfer complete!"
+  crt 5
+  ask turtles [ set shape "money_gone" ]
+  ask turtles [ set size 10 ]
+  ask turtles [ set ycor -15 ]
+  ask turtles [ set xcor random-xcor ]
+  ask turtles [ facexy xcor 20 ]
+  ask turtles [ fd 1 ]
   tick
+    ask turtles [ fd 1 ]
+  tick
+    ask turtles [ fd 1 ]
+  tick
+    ask turtles [ fd 1 ]
+  tick
+    ask turtles [ fd 1 ]
+  tick
+    ask turtles [ fd 1 ]
+  tick
+    ask turtles [ fd 1 ]
+  tick
+    ask turtles [ fd 1 ]
+  tick
+    ask turtles [ fd 1 ]
+  tick
+    ask turtles [ fd 1 ]
+  tick
+    ask turtles [ fd 1 ]
+  tick
+    ask turtles [ fd 1 ]
+  tick
+    ask turtles [ fd 1 ]
+  tick
+    ask turtles [ fd 1 ]
+  tick
+    ask turtles [ fd 1 ]
+  tick
+    ask turtles [ fd 1 ]
+  tick
+    ask turtles [ fd 1 ]
+  tick
+    ask turtles [ fd 1 ]
+  tick
+    ask turtles [ fd 1 ]
+  tick
+    ask turtles [ fd 1 ]
+  tick
+    ask turtles [ fd 1 ]
+  tick
+    ask turtles [ fd 1 ]
+  tick
+    ask turtles [ fd 1 ]
+  tick
+    ask turtles [ fd 1 ]
+  tick
+    ask turtles [ fd 1 ]
+  tick
+    ask turtles [ fd 1 ]
+  tick
+    ask turtles [ fd 1 ]
+  tick
+    ask turtles [ fd 1 ]
+  tick
+    ask turtles [ fd 1 ]
+  tick
+    ask turtles [ fd 1 ]
+  tick
+    ask turtles [ fd 1 ]
+  tick
+    ask turtles [ fd 1 ]
+  tick
+      ask turtles [ fd 1 ]
+  tick
+    ask turtles [ fd 1 ]
+  tick
+    ask turtles [ fd 1 ]
+  tick
+  ask turtles [die]
 end
 
 ;; this procedure checks the coordinates and makes the turtles
 ;; reflect according to the law that the angle of reflection is
 ;; equal to the angle of incidence
-to bouncea  ;; turtle procedure
+to bounce  ;; turtle procedure
   ; check: hitting left or right wall?
   if abs [pxcor] of patch-ahead 0.1 = max-pxcor
     ; if so, reflect heading around x axis
@@ -60,24 +217,6 @@ to bouncea  ;; turtle procedure
     [ set heading (180 - heading) ]
 end
 
-to bounceb  ;; turtle procedure
-  ; check: hitting left or right wall?
-  if abs [pxcor] of patch-ahead 0.1 = max-pycor
-    ; if so, reflect heading around x axis
-  [
-    ask patch-ahead 1 [set pcolor green]
-    sound:play-note instrument  (40 + pxcor) (pitchLevel + 64) 2
-    ;; sound:play-drum "Splash Cymbal" 64
-    ask patch-ahead 1 [set pcolor red]
-    set heading (- heading)
-
-  ]
-  ; check: hitting top or bottom wall?
-  if abs [pxcor] of patch-ahead 0.1 = max-pxcor
-    ; if so, reflect heading around y axis
-    [ set heading (180 - heading) ]
-end
-
 
 ; Public Domain:
 ; To the extent possible under law, Uri Wilensky has waived all
@@ -86,8 +225,8 @@ end
 GRAPHICS-WINDOW
 175
 10
-992
-828
+511
+347
 -1
 -1
 8.0
@@ -100,10 +239,10 @@ GRAPHICS-WINDOW
 0
 0
 1
--50
-50
--50
-50
+-20
+20
+-20
+20
 1
 1
 1
@@ -134,7 +273,7 @@ BUTTON
 84
 go
 go
-T
+NIL
 1
 T
 OBSERVER
@@ -151,7 +290,7 @@ SWITCH
 138
 leave-trace?
 leave-trace?
-0
+1
 1
 -1000
 
@@ -164,7 +303,7 @@ pitchLevel
 pitchLevel
 0
 100
-78.0
+50.0
 1
 1
 NIL
@@ -177,23 +316,8 @@ CHOOSER
 352
 instrument
 instrument
-"Marimba" "Flute" "Trumpet" "Chiff" "Xylophone" "Calliope" "violin"
-0
-
-SLIDER
-3
-378
-176
-411
-ml
-ml
-1
-100
-2.0
-1
-1
-NIL
-HORIZONTAL
+"Marimba" "Flute" "Trumpet" "Chiff" "Xylophone" "Calliope"
+5
 
 @#$#@#$#@
 ## WHAT IS IT?
@@ -367,6 +491,16 @@ line half
 true
 0
 Line -7500403 true 150 0 150 150
+
+money_gone
+true
+0
+Line -10899396 false 180 105 120 135
+Line -10899396 false 120 135 180 165
+Line -10899396 false 180 165 120 195
+Line -10899396 false 150 90 150 210
+Polygon -1 true false 120 105 60 75 75 120 120 135 120 105
+Polygon -1 true false 180 105 240 75 225 120 180 135
 
 pentagon
 false

@@ -1,121 +1,89 @@
-;;One must include the following line to ensure that we can use sound features.
-extensions [ sound ]
+breed [ bowls bowl ]
+breed [ apples apple ]
+breed [ bugs bug ]
+
+globals [ die? score catch? ]
+
+to instruction
+  user-message "use mouse to move"
+  user-message "catch apples"
+  user-message "avoid the bugs"
+  user-message "click setup to load"
+  user-message "click go to start"
+end
 
 to setup
   clear-all
-  set-default-shape turtles "circle"
-  draw-walls
-  create-turtles ml                     ;; create some turtles
-    [ randomize ]                       ;; place them randomly
   reset-ticks
-end
-
-; draws the boundaries (walls) of the "billiard table"
-to draw-walls
-  ; draw left and right walls
-  ask patches with [abs pxcor = max-pxcor]
-    [ set pcolor blue ]
-  ; draw top and bottom walls
-  ask patches with [abs pycor = max-pycor]
-    [ set pcolor blue ]
-end
-
-; set random location
-to randomize
-  setxy random-xcor random-ycor
-  if pcolor = blue       ; if it's on the wall...
-    [ randomize ]        ; ...try again
+  set die? false
+  set score 0
+  create-bowls 1 [ set shape "bowl" set size 10 set color red facexy xcor 20]
 end
 
 to go
-  ask turtles [
-    ifelse leave-trace?             ;; the turtle puts its pen up or down depending on the
-      [ pen-down ]                  ;;   value of the LEAVE-TRACE? switch
-      [ pen-up ]
-    bouncea
-    bounceb
-    fd 0.1
-  ]
+  crb
+  cra
+  repeat 40000 / speed [  if die? [ ca stop ] dy? mv_person fall ]
+  ask bugs [ die ]
+  ask apples [ die ]
+end
+
+to fall
+  ask bugs [ fd 0.001 * speed ]
+  ask apples [ fd 0.001 * speed ]
   tick
 end
 
-;; this procedure checks the coordinates and makes the turtles
-;; reflect according to the law that the angle of reflection is
-;; equal to the angle of incidence
-to bouncea  ;; turtle procedure
-  ; check: hitting left or right wall?
-  if abs [pxcor] of patch-ahead 0.1 = max-pxcor
-    ; if so, reflect heading around x axis
-  [
-    ask patch-ahead 1 [set pcolor green]
-    sound:play-note instrument  (40 + pycor) (pitchLevel + 64) 2
-    ;; sound:play-drum "Splash Cymbal" 64
-    ask patch-ahead 1 [set pcolor red]
-    set heading (- heading)
-
-  ]
-  ; check: hitting top or bottom wall?
-  if abs [pycor] of patch-ahead 0.1 = max-pycor
-    ; if so, reflect heading around y axis
-    [ set heading (180 - heading) ]
+to mv_person
+  ask bowls [ setxy mouse-xcor -17 ]
 end
 
-to bounceb  ;; turtle procedure
-  ; check: hitting left or right wall?
-  if abs [pxcor] of patch-ahead 0.1 = max-pycor
-    ; if so, reflect heading around x axis
-  [
-    ask patch-ahead 1 [set pcolor green]
-    sound:play-note instrument  (40 + pxcor) (pitchLevel + 64) 2
-    ;; sound:play-drum "Splash Cymbal" 64
-    ask patch-ahead 1 [set pcolor red]
-    set heading (- heading)
-
-  ]
-  ; check: hitting top or bottom wall?
-  if abs [pxcor] of patch-ahead 0.1 = max-pxcor
-    ; if so, reflect heading around y axis
-    [ set heading (180 - heading) ]
+to dy?
+  ask bowls [ if any? bugs-here  [ user-message "Game Over !" user-message word "your score: " score set die? true ] ]
+  ask apples [ if any? bowls-here [ set score score + 1 die ] ]
 end
 
+to crb
+  every random 5 [ create-bugs (random bugs_number - 1) + 1 [ set shape "bug" set color blue setxy random-xcor 20 set size 2 set heading 180 ] ]
+end
 
-; Public Domain:
-; To the extent possible under law, Uri Wilensky has waived all
-; copyright and related or neighboring rights to this model.
+to cra
+  create-apples ( random 9 ) + 1 [ set shape "apple" set size 5 set heading 180 setxy random-xcor 20 ]
+end
 @#$#@#$#@
 GRAPHICS-WINDOW
-175
+210
 10
-992
-828
+751
+552
 -1
 -1
-8.0
+13.0
 1
 10
 1
 1
 1
 0
+1
+1
+1
+-20
+20
+-20
+20
 0
 0
-1
--50
-50
--50
-50
-1
-1
 1
 ticks
 30.0
 
 BUTTON
-17
-51
-75
-84
-NIL
+42
+185
+112
+218
+set up
 setup
 NIL
 1
@@ -127,11 +95,26 @@ NIL
 NIL
 1
 
+SLIDER
+21
+219
+193
+252
+bugs_number
+bugs_number
+1
+10
+10.0
+1
+1
+NIL
+HORIZONTAL
+
 BUTTON
-88
-51
-143
-84
+112
+185
+175
+218
 go
 go
 T
@@ -142,65 +125,87 @@ NIL
 NIL
 NIL
 NIL
-0
-
-SWITCH
-18
-105
-147
-138
-leave-trace?
-leave-trace?
-0
 1
--1000
 
 SLIDER
-67
-152
-100
-302
-pitchLevel
-pitchLevel
-0
-100
-78.0
+21
+251
+193
+284
+speed
+speed
 1
-1
-NIL
-VERTICAL
-
-CHOOSER
-19
-307
-157
-352
-instrument
-instrument
-"Marimba" "Flute" "Trumpet" "Chiff" "Xylophone" "Calliope" "violin"
-0
-
-SLIDER
 3
-378
-176
-411
-ml
-ml
-1
-100
-2.0
+3.0
 1
 1
 NIL
 HORIZONTAL
 
+BUTTON
+61
+151
+161
+184
+instruction
+instruction
+NIL
+1
+T
+OBSERVER
+NIL
+NIL
+NIL
+NIL
+1
+
+MONITOR
+75
+284
+133
+345
+score
+score
+17
+1
+15
+
 @#$#@#$#@
 ## WHAT IS IT?
 
-This demo shows how to make turtles bounce off the walls.
+(a general understanding of what the model is trying to show or explain)
 
-<!-- 2004 -->
+## HOW IT WORKS
+
+(what rules the agents use to create the overall behavior of the model)
+
+## HOW TO USE IT
+
+(how to use the model, including a description of each of the items in the Interface tab)
+
+## THINGS TO NOTICE
+
+(suggested things for the user to notice while running the model)
+
+## THINGS TO TRY
+
+(suggested things for the user to try to do (move sliders, switches, etc.) with the model)
+
+## EXTENDING THE MODEL
+
+(suggested things to add or change in the Code tab to make the model more complicated, detailed, accurate, etc.)
+
+## NETLOGO FEATURES
+
+(interesting or unusual features of NetLogo that the model uses, particularly in the Code tab; or where workarounds were needed for missing features)
+
+## RELATED MODELS
+
+(models in the NetLogo Models Library and elsewhere which are of related interest)
+
+## CREDITS AND REFERENCES
+
+(a reference to the model's URL on the web if it has one, as well as any other necessary credits, citations, and links)
 @#$#@#$#@
 default
 true
@@ -212,10 +217,29 @@ true
 0
 Polygon -7500403 true true 150 0 135 15 120 60 120 105 15 165 15 195 120 180 135 240 105 270 120 285 150 270 180 285 210 270 165 240 180 180 285 195 285 165 180 105 180 60 165 15
 
+apple
+true
+0
+Polygon -2674135 true false 150 120 135 90 105 90 75 135 90 195 135 225 150 210 165 225 210 195 225 135 165 90 195 90 225 135 165 90
+Line -10899396 false 150 60 150 120
+Polygon -10899396 true false 150 75 165 60 180 60 195 75 180 90 165 90
+Line -14835848 false 150 75 195 75
+Line -14835848 false 180 60 165 75
+Line -14835848 false 180 90 165 75
+
 arrow
 true
 0
 Polygon -7500403 true true 150 0 0 150 105 150 105 293 195 293 195 150 300 150
+
+bowl
+true
+0
+Polygon -6459832 true false 105 150 135 135 165 135 195 150 165 165 135 165
+Polygon -6459832 true false 105 150 120 180 180 180 195 150
+Line -16777216 false 105 150 135 165
+Line -16777216 false 135 165 165 165
+Line -16777216 false 165 165 195 150
 
 box
 false
@@ -394,6 +418,22 @@ Polygon -7500403 true true 135 105 90 60 45 45 75 105 135 135
 Polygon -7500403 true true 165 105 165 135 225 105 255 45 210 60
 Polygon -7500403 true true 135 90 120 45 150 15 180 45 165 90
 
+sheep
+false
+15
+Circle -1 true true 203 65 88
+Circle -1 true true 70 65 162
+Circle -1 true true 150 105 120
+Polygon -7500403 true false 218 120 240 165 255 165 278 120
+Circle -7500403 true false 214 72 67
+Rectangle -1 true true 164 223 179 298
+Polygon -1 true true 45 285 30 285 30 240 15 195 45 210
+Circle -1 true true 3 83 150
+Rectangle -1 true true 65 221 80 296
+Polygon -1 true true 195 285 210 285 210 240 240 210 195 210
+Polygon -7500403 true false 276 85 285 105 302 99 294 83
+Polygon -7500403 true false 219 85 210 105 193 99 201 83
+
 square
 false
 0
@@ -478,6 +518,13 @@ Line -7500403 true 40 84 269 221
 Line -7500403 true 40 216 269 79
 Line -7500403 true 84 40 221 269
 
+wolf
+false
+0
+Polygon -16777216 true false 253 133 245 131 245 133
+Polygon -7500403 true true 2 194 13 197 30 191 38 193 38 205 20 226 20 257 27 265 38 266 40 260 31 253 31 230 60 206 68 198 75 209 66 228 65 243 82 261 84 268 100 267 103 261 77 239 79 231 100 207 98 196 119 201 143 202 160 195 166 210 172 213 173 238 167 251 160 248 154 265 169 264 178 247 186 240 198 260 200 271 217 271 219 262 207 258 195 230 192 198 210 184 227 164 242 144 259 145 284 151 277 141 293 140 299 134 297 127 273 119 270 105
+Polygon -7500403 true true -1 195 14 180 36 166 40 153 53 140 82 131 134 133 159 126 188 115 227 108 236 102 238 98 268 86 269 92 281 87 269 103 269 113
+
 x
 false
 0
@@ -486,9 +533,6 @@ Polygon -7500403 true true 30 75 75 30 270 225 225 270
 @#$#@#$#@
 NetLogo 6.0.4
 @#$#@#$#@
-setup
-set leave-trace? true
-go
 @#$#@#$#@
 @#$#@#$#@
 @#$#@#$#@

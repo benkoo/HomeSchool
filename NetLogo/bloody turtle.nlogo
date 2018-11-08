@@ -5,7 +5,7 @@ to setup
   clear-all
   set-default-shape turtles "circle"
   draw-walls
-  create-turtles ml                     ;; create some turtles
+  create-turtles 10                     ;; create some turtles
     [ randomize ]                       ;; place them randomly
   reset-ticks
 end
@@ -32,8 +32,7 @@ to go
     ifelse leave-trace?             ;; the turtle puts its pen up or down depending on the
       [ pen-down ]                  ;;   value of the LEAVE-TRACE? switch
       [ pen-up ]
-    bouncea
-    bounceb
+    bounce
     fd 0.1
   ]
   tick
@@ -42,7 +41,7 @@ end
 ;; this procedure checks the coordinates and makes the turtles
 ;; reflect according to the law that the angle of reflection is
 ;; equal to the angle of incidence
-to bouncea  ;; turtle procedure
+to bounce  ;; turtle procedure
   ; check: hitting left or right wall?
   if abs [pxcor] of patch-ahead 0.1 = max-pxcor
     ; if so, reflect heading around x axis
@@ -60,37 +59,19 @@ to bouncea  ;; turtle procedure
     [ set heading (180 - heading) ]
 end
 
-to bounceb  ;; turtle procedure
-  ; check: hitting left or right wall?
-  if abs [pxcor] of patch-ahead 0.1 = max-pycor
-    ; if so, reflect heading around x axis
-  [
-    ask patch-ahead 1 [set pcolor green]
-    sound:play-note instrument  (40 + pxcor) (pitchLevel + 64) 2
-    ;; sound:play-drum "Splash Cymbal" 64
-    ask patch-ahead 1 [set pcolor red]
-    set heading (- heading)
-
-  ]
-  ; check: hitting top or bottom wall?
-  if abs [pxcor] of patch-ahead 0.1 = max-pxcor
-    ; if so, reflect heading around y axis
-    [ set heading (180 - heading) ]
-end
-
 
 ; Public Domain:
 ; To the extent possible under law, Uri Wilensky has waived all
 ; copyright and related or neighboring rights to this model.
 @#$#@#$#@
 GRAPHICS-WINDOW
-175
-10
-992
-828
+265
+23
+738
+497
 -1
 -1
-8.0
+11.3415
 1
 10
 1
@@ -100,10 +81,10 @@ GRAPHICS-WINDOW
 0
 0
 1
--50
-50
--50
-50
+-20
+20
+-20
+20
 1
 1
 1
@@ -164,7 +145,7 @@ pitchLevel
 pitchLevel
 0
 100
-78.0
+50.0
 1
 1
 NIL
@@ -177,23 +158,59 @@ CHOOSER
 352
 instrument
 instrument
-"Marimba" "Flute" "Trumpet" "Chiff" "Xylophone" "Calliope" "violin"
-0
+"Marimba" "Flute" "Trumpet" "Chiff" "Xylophone" "Calliope"
+1
 
-SLIDER
-3
-378
-176
-411
-ml
-ml
-1
-100
-2.0
-1
-1
+BUTTON
+20
+359
+114
+392
+reddening
+ask turtles [set color red]
 NIL
-HORIZONTAL
+1
+T
+OBSERVER
+NIL
+NIL
+NIL
+NIL
+1
+
+BUTTON
+20
+396
+114
+429
+turtle
+ask turtles [set shape \"turtle\"]\n
+NIL
+1
+T
+OBSERVER
+NIL
+NIL
+NIL
+NIL
+1
+
+BUTTON
+788
+61
+992
+94
+NIL
+ask turtles [set size 5]
+NIL
+1
+T
+OBSERVER
+NIL
+NIL
+NIL
+NIL
+1
 
 @#$#@#$#@
 ## WHAT IS IT?
@@ -484,7 +501,7 @@ false
 Polygon -7500403 true true 270 75 225 30 30 225 75 270
 Polygon -7500403 true true 30 75 75 30 270 225 225 270
 @#$#@#$#@
-NetLogo 6.0.4
+NetLogo 6.0
 @#$#@#$#@
 setup
 set leave-trace? true

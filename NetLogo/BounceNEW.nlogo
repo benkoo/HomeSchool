@@ -1,11 +1,11 @@
 ;;One must include the following line to ensure that we can use sound features.
 extensions [ sound ]
 
-to setup
+to setupX
   clear-all
   set-default-shape turtles "circle"
   draw-walls
-  create-turtles ml                     ;; create some turtles
+  create-turtles y                  ;; create some turtles
     [ randomize ]                       ;; place them randomly
   reset-ticks
 end
@@ -32,8 +32,7 @@ to go
     ifelse leave-trace?             ;; the turtle puts its pen up or down depending on the
       [ pen-down ]                  ;;   value of the LEAVE-TRACE? switch
       [ pen-up ]
-    bouncea
-    bounceb
+    bounce
     fd 0.1
   ]
   tick
@@ -42,33 +41,15 @@ end
 ;; this procedure checks the coordinates and makes the turtles
 ;; reflect according to the law that the angle of reflection is
 ;; equal to the angle of incidence
-to bouncea  ;; turtle procedure
+to bounce  ;; turtle procedure
   ; check: hitting left or right wall?
-  if abs [pxcor] of patch-ahead 0.1 = max-pxcor
-    ; if so, reflect heading around x axis
-  [
-    ask patch-ahead 1 [set pcolor green]
-    sound:play-note instrument  (40 + pycor) (pitchLevel + 64) 2
-    ;; sound:play-drum "Splash Cymbal" 64
-    ask patch-ahead 1 [set pcolor red]
-    set heading (- heading)
-
-  ]
-  ; check: hitting top or bottom wall?
   if abs [pycor] of patch-ahead 0.1 = max-pycor
-    ; if so, reflect heading around y axis
-    [ set heading (180 - heading) ]
-end
-
-to bounceb  ;; turtle procedure
-  ; check: hitting left or right wall?
-  if abs [pxcor] of patch-ahead 0.1 = max-pycor
     ; if so, reflect heading around x axis
   [
     ask patch-ahead 1 [set pcolor green]
-    sound:play-note instrument  (40 + pxcor) (pitchLevel + 64) 2
+    sound:play-drum "ACOUSTIC SNARE" 64
+    sound:play-note instrument  (40 + pxcor) (pitchLevel + 64) (5 * x / 100)
     ;; sound:play-drum "Splash Cymbal" 64
-    ask patch-ahead 1 [set pcolor red]
     set heading (- heading)
 
   ]
@@ -86,8 +67,8 @@ end
 GRAPHICS-WINDOW
 175
 10
-992
-828
+511
+347
 -1
 -1
 8.0
@@ -97,13 +78,13 @@ GRAPHICS-WINDOW
 1
 1
 0
-0
-0
 1
--50
-50
--50
-50
+1
+1
+-20
+20
+-20
+20
 1
 1
 1
@@ -112,11 +93,11 @@ ticks
 
 BUTTON
 17
-51
-75
-84
-NIL
-setup
+15
+125
+48
+设定初始状态
+setupX
 NIL
 1
 T
@@ -128,11 +109,11 @@ NIL
 1
 
 BUTTON
-88
-51
-143
-84
-go
+35
+59
+98
+92
+开始
 go
 T
 1
@@ -151,20 +132,20 @@ SWITCH
 138
 leave-trace?
 leave-trace?
-0
+1
 1
 -1000
 
 SLIDER
 67
 152
-100
+104
 302
 pitchLevel
 pitchLevel
 0
 100
-78.0
+0.0
 1
 1
 NIL
@@ -177,19 +158,34 @@ CHOOSER
 352
 instrument
 instrument
-"Marimba" "Flute" "Trumpet" "Chiff" "Xylophone" "Calliope" "violin"
-0
+"Marimba" "Flute" "Trumpet" "Xylophone" "Calliope"
+1
 
 SLIDER
-3
-378
-176
-411
-ml
-ml
-1
+149
+381
+321
+414
+x
+x
+0
 100
-2.0
+22.0
+1
+1
+NIL
+HORIZONTAL
+
+SLIDER
+560
+72
+732
+105
+y
+y
+1
+10
+7.0
 1
 1
 NIL
