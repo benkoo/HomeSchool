@@ -1,93 +1,68 @@
-;;One must include the following line to ensure that we can use sound features.
 extensions [ sound ]
 
 to setup
   clear-all
   set-default-shape turtles "circle"
   draw-walls
-  create-turtles ml                     ;; create some turtles
-    [ randomize ]                       ;; place them randomly
+  create-turtles ml
+    [ randomize ]                       ;; p
   reset-ticks
 end
 
-; draws the boundaries (walls) of the "billiard table"
+
 to draw-walls
-  ; draw left and right walls
+
   ask patches with [abs pxcor = max-pxcor]
     [ set pcolor blue ]
-  ; draw top and bottom walls
+
   ask patches with [abs pycor = max-pycor]
     [ set pcolor blue ]
 end
 
-; set random location
+
 to randomize
   setxy random-xcor random-ycor
-  if pcolor = blue       ; if it's on the wall...
-    [ randomize ]        ; ...try again
+  if pcolor = blue
+    [ randomize ]
 end
 
 to go
   ask turtles [
-    ifelse leave-trace?             ;; the turtle puts its pen up or down depending on the
-      [ pen-down ]                  ;;   value of the LEAVE-TRACE? switch
+    ifelse leave-trace?
+      [ pen-down ]
       [ pen-up ]
-    bouncea
-    bounceb
+    bounce
     fd 0.1
   ]
   tick
 end
 
-;; this procedure checks the coordinates and makes the turtles
-;; reflect according to the law that the angle of reflection is
-;; equal to the angle of incidence
-to bouncea  ;; turtle procedure
-  ; check: hitting left or right wall?
+to bounce
+  if abs [pycor] of patch-ahead 0.1 = max-pycor
+
+  [
+    ask patch-ahead 0.1 [set pcolor green]
+    sound:play-note instrument  (40 + pxcor) (pitchLevel + 64) 2
+
+    ask patch-ahead 0.1 [set pcolor red]
+    set heading (- heading)
+
+  ]
   if abs [pxcor] of patch-ahead 0.1 = max-pxcor
-    ; if so, reflect heading around x axis
   [
     ask patch-ahead 1 [set pcolor green]
     sound:play-note instrument  (40 + pycor) (pitchLevel + 64) 2
-    ;; sound:play-drum "Splash Cymbal" 64
     ask patch-ahead 1 [set pcolor red]
     set heading (- heading)
 
   ]
-  ; check: hitting top or bottom wall?
-  if abs [pycor] of patch-ahead 0.1 = max-pycor
-    ; if so, reflect heading around y axis
-    [ set heading (180 - heading) ]
 end
-
-to bounceb  ;; turtle procedure
-  ; check: hitting left or right wall?
-  if abs [pxcor] of patch-ahead 0.1 = max-pycor
-    ; if so, reflect heading around x axis
-  [
-    ask patch-ahead 1 [set pcolor green]
-    sound:play-note instrument  (40 + pxcor) (pitchLevel + 64) 2
-    ;; sound:play-drum "Splash Cymbal" 64
-    ask patch-ahead 1 [set pcolor red]
-    set heading (- heading)
-
-  ]
-  ; check: hitting top or bottom wall?
-  if abs [pxcor] of patch-ahead 0.1 = max-pxcor
-    ; if so, reflect heading around y axis
-    [ set heading (180 - heading) ]
-end
-
-
-; Public Domain:
-; To the extent possible under law, Uri Wilensky has waived all
-; copyright and related or neighboring rights to this model.
 @#$#@#$#@
 GRAPHICS-WINDOW
 175
 10
-992
-828
+991
+827
 -1
 -1
 8.0
@@ -97,8 +72,8 @@ GRAPHICS-WINDOW
 1
 1
 0
-0
-0
+1
+1
 1
 -50
 50
@@ -189,7 +164,7 @@ ml
 ml
 1
 100
-2.0
+1.0
 1
 1
 NIL
