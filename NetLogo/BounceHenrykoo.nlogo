@@ -41,11 +41,11 @@ to bounce
   if abs [pycor] of patch-ahead 0.1 = max-pycor
 
   [
-    ask patch-ahead 0.1 [set pcolor green]
+    ask patch-ahead 1 [set pcolor green]
     sound:play-note instrument  (40 + pxcor) (pitchLevel + 64) 2
 
-    ask patch-ahead 0.1 [set pcolor red]
-    set heading (- heading)
+    ask patch-ahead 1 [set pcolor red]
+    set heading (180 - heading)
 
   ]
   if abs [pxcor] of patch-ahead 0.1 = max-pxcor
@@ -53,7 +53,7 @@ to bounce
     ask patch-ahead 1 [set pcolor green]
     sound:play-note instrument  (40 + pycor) (pitchLevel + 64) 2
     ask patch-ahead 1 [set pcolor red]
-    set heading (- heading)
+    set heading (180 - heading)
 
   ]
 end
@@ -139,7 +139,7 @@ pitchLevel
 pitchLevel
 0
 100
-78.0
+100.0
 1
 1
 NIL
@@ -156,14 +156,59 @@ instrument
 0
 
 SLIDER
-3
-378
-176
-411
+2
+451
+174
+484
 ml
 ml
 1
 100
+1.0
+1
+1
+NIL
+HORIZONTAL
+
+SLIDER
+2
+418
+174
+451
+ml
+ml
+0
+1000
+1.0
+1
+1
+d
+HORIZONTAL
+
+SLIDER
+2
+483
+174
+516
+ml
+ml
+0
+10
+1.0
+1
+1
+NIL
+HORIZONTAL
+
+SLIDER
+2
+386
+174
+419
+ml
+ml
+0
+10000
 1.0
 1
 1
