@@ -53,7 +53,7 @@ to bounce
     ask patch-ahead 1 [set pcolor green]
     sound:play-note instrument  (40 + pycor) (pitchLevel + 64) 2
     ask patch-ahead 1 [set pcolor red]
-    set heading (180 - heading)
+    set heading ( - heading)
 
   ]
 end
@@ -164,7 +164,7 @@ ml
 ml
 1
 100
-1.0
+2.0
 1
 1
 NIL
@@ -179,7 +179,7 @@ ml
 ml
 0
 1000
-1.0
+2.0
 1
 1
 d
@@ -194,7 +194,7 @@ ml
 ml
 0
 10
-1.0
+2.0
 1
 1
 NIL
@@ -209,7 +209,7 @@ ml
 ml
 0
 10000
-1.0
+2.0
 1
 1
 NIL
