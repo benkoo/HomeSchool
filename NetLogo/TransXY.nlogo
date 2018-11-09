@@ -2,25 +2,32 @@ turtles-own [locX locY]
 
 to setup
   ca
-  create-turtles 3 [
-    set shape "turtle"
-    set size 2
-    set color red
-    set locX xcor
-    set locY ycor
+  ask patches [
+    sprout 1 [
+      set shape "dot"
+      set size 0.5
+      set color white
+      set locX xcor
+      set locY ycor
+    ]
   ]
+
 end
 
 
 to go
   ask turtles [
-    set locX ( locX + transX )
-    set locY ( locY + transY )
-    facexy 0 0
-    set xcor locX
-    set ycor locY
+    let xv (locX * scaleX + transX)
+    let yv (locY * scaleX + transY)
+    ifelse  ( xv < max-pxcor and yv <= max-pycor)[
+      setxy xv  yv
+      set color white
+      show-turtle
+    ][
+      hide-turtle
+      set color yellow
+    ]
   ]
-
 end
 @#$#@#$#@
 GRAPHICS-WINDOW
@@ -93,8 +100,8 @@ transX
 transX
 1
 5
-3.0
-1
+1.0
+0.1
 1
 NIL
 HORIZONTAL
@@ -108,8 +115,23 @@ transY
 transY
 1
 5
-3.0
+1.0
+0.1
 1
+NIL
+HORIZONTAL
+
+SLIDER
+22
+357
+194
+390
+scaleX
+scaleX
+0.01
+10
+0.91
+0.1
 1
 NIL
 HORIZONTAL
