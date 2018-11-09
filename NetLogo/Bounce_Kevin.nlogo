@@ -50,7 +50,7 @@ to bounce  ;; turtle procedure
     sound:play-note instrument  (40 + pxcor) (pitchLevel + 64) 2
     ;; sound:play-drum "Splash Cymbal" 64
     ask patch-ahead 1 [set pcolor red]
-    set heading (- heading)
+    set heading ( 180 - heading)
 
   ]
   ; check: hitting top or bottom wall?
