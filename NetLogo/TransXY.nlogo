@@ -5,7 +5,7 @@ to setup
   ask patches [
     sprout 1 [
       set shape "dot"
-      set size 0.5
+      set size 0.3
       set color white
       set locX xcor
       set locY ycor
@@ -18,7 +18,7 @@ end
 to go
   ask turtles [
     let xv (locX * scaleX + transX)
-    let yv (locY * scaleX + transY)
+    let yv (locY * scaleY + transY)
     ifelse  ( xv < max-pxcor and yv <= max-pycor)[
       setxy xv  yv
       set color white
@@ -130,8 +130,23 @@ scaleX
 scaleX
 0.01
 10
-0.91
+0.41
 0.1
+1
+NIL
+HORIZONTAL
+
+SLIDER
+13
+417
+185
+450
+scaleY
+scaleY
+0.1
+10
+3.0
+0.01
 1
 NIL
 HORIZONTAL
