@@ -19,7 +19,8 @@ to go
   ask turtles [
     let xv (locX * scaleX + transX)
     let yv (locY * scaleY + transY)
-    ifelse  ( xv < max-pxcor and yv <= max-pycor)[
+    ifelse  ( xv < max-pxcor and yv < max-pycor and
+              xv > min-pxcor and yv > min-pycor)[
       setxy xv  yv
       set color white
       show-turtle
@@ -44,8 +45,8 @@ GRAPHICS-WINDOW
 1
 1
 0
-1
-1
+0
+0
 1
 -16
 16
@@ -100,7 +101,7 @@ transX
 transX
 1
 5
-1.0
+3.8
 0.1
 1
 NIL
@@ -115,7 +116,7 @@ transY
 transY
 1
 5
-1.0
+4.4
 0.1
 1
 NIL
@@ -130,7 +131,7 @@ scaleX
 scaleX
 0.01
 10
-0.41
+1.91
 0.1
 1
 NIL
@@ -145,7 +146,7 @@ scaleY
 scaleY
 0.1
 10
-3.0
+2.37
 0.01
 1
 NIL
