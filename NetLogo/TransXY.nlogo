@@ -12,6 +12,19 @@ to setup
     ]
   ]
 
+  ; create a directed network such that each node has a LINK-CHANCE percent chance of
+  ; having a link established from a given node to one of its neighbors
+  ask turtles [
+    let neighbor-nodes turtle-set [turtles-here] of neighbors4
+    create-links-to neighbor-nodes
+    [
+
+    ]
+  ]
+
+  ;update-globals
+  ;update-visuals
+  reset-ticks
 end
 
 
@@ -24,9 +37,26 @@ to go
       setxy xv  yv
       set color white
       show-turtle
+
+      ask link-neighbors [
+        ifelse (locX < max-pxcor and locY < max-pycor and
+            locX > min-pxcor and locY > min-pycor)[
+
+            ask link-set [my-links] of self [ show-link ]
+        ][
+          ask link-set [my-links] of self [ hide-link ]
+        ]
+      ]
+
+
     ][
       hide-turtle
+      setxy 0 0
       set color yellow
+      ask link-set [my-links] of self
+      [
+        hide-link
+      ]
     ]
   ]
 end
@@ -101,7 +131,7 @@ transX
 transX
 1
 5
-3.8
+4.4
 0.1
 1
 NIL
@@ -116,7 +146,7 @@ transY
 transY
 1
 5
-4.4
+2.4
 0.1
 1
 NIL
@@ -131,7 +161,7 @@ scaleX
 scaleX
 0.01
 10
-1.91
+1.21
 0.1
 1
 NIL
@@ -146,7 +176,7 @@ scaleY
 scaleY
 0.1
 10
-2.37
+0.1
 0.01
 1
 NIL
