@@ -2,11 +2,18 @@ turtles-own [locX locY]
 
 to setup
   ca
+
+  ;; Reset the global variables
+  set transX 0
+  set transY 0
+  set scaleX 1
+  set scaleY 1
+
   ask patches [
     sprout 1 [
       set shape "dot"
-      set size 0.3
-      set color white
+      set size 1
+      set color blue
       set locX xcor
       set locY ycor
     ]
@@ -16,10 +23,7 @@ to setup
   ; having a link established from a given node to one of its neighbors
   ask turtles [
     let neighbor-nodes turtle-set [turtles-here] of neighbors4
-    create-links-to neighbor-nodes
-    [
-
-    ]
+    create-links-with neighbor-nodes
   ]
 
   ;update-globals
@@ -29,36 +33,32 @@ end
 
 
 to go
+
   ask turtles [
+
     let xv (locX * scaleX + transX)
     let yv (locY * scaleY + transY)
+
     ifelse  ( xv < max-pxcor and yv < max-pycor and
               xv > min-pxcor and yv > min-pycor)[
       setxy xv  yv
-      set color white
+      set color yellow
       show-turtle
-
-      ask link-neighbors [
-        ifelse (locX < max-pxcor and locY < max-pycor and
-            locX > min-pxcor and locY > min-pycor)[
-
-            ask link-set [my-links] of self [ show-link ]
-        ][
-          ask link-set [my-links] of self [ hide-link ]
-        ]
+      ask link-set [my-links] of self
+      [
+        let lk self
+        ask other-end
+        [ if ( color = yellow) [ask lk[ show-link ] ]]
       ]
-
-
     ][
       hide-turtle
       setxy 0 0
-      set color yellow
-      ask link-set [my-links] of self
-      [
-        hide-link
-      ]
+      set color white
+      ;;ask link-set [my-links] of self [ hide-link ]
     ]
   ]
+
+  ask link-set [my-links] of turtles with [color = white] [ hide-link ]
 end
 @#$#@#$#@
 GRAPHICS-WINDOW
@@ -89,10 +89,10 @@ ticks
 30.0
 
 BUTTON
-101
+27
+66
 93
-167
-126
+99
 NIL
 setup
 NIL
@@ -106,10 +106,10 @@ NIL
 1
 
 BUTTON
-109
-163
-172
-196
+93
+66
+156
+99
 NIL
 go
 T
@@ -123,60 +123,60 @@ NIL
 1
 
 SLIDER
-18
-244
-190
-277
+15
+118
+187
+151
 transX
 transX
-1
+0
 5
-4.4
+2.3
 0.1
 1
 NIL
 HORIZONTAL
 
 SLIDER
-21
-289
-193
-322
-transY
-transY
-1
-5
-2.4
-0.1
-1
-NIL
-HORIZONTAL
-
-SLIDER
-22
-357
-194
-390
-scaleX
-scaleX
-0.01
-10
-1.21
-0.1
-1
-NIL
-HORIZONTAL
-
-SLIDER
-13
-417
+15
+152
+187
 185
-450
-scaleY
-scaleY
+transY
+transY
+0
+5
+3.9
 0.1
+1
+NIL
+HORIZONTAL
+
+SLIDER
+14
+210
+186
+243
+scaleX
+scaleX
+0
 10
+3.1
 0.1
+1
+NIL
+HORIZONTAL
+
+SLIDER
+14
+243
+186
+276
+scaleY
+scaleY
+0
+10
+0.96
 0.01
 1
 NIL
