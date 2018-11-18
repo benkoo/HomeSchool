@@ -8,6 +8,7 @@ to setup
   set transY 0
   set scaleX 1
   set scaleY 1
+  set rotation 0
 
   ask patches [
     sprout 1 [
@@ -36,8 +37,8 @@ to go
 
   ask turtles [
 
-    let xv (locX * scaleX + transX)
-    let yv (locY * scaleY + transY)
+    let xv  ( transX  + ( locX * scaleX ) * cos rotation) - ( transY  + ( locY * scaleY ) * sin rotation)
+    let yv  ( transY  + ( locY * scaleY ) * cos rotation) + ( transX  + ( locX * scaleX ) * sin rotation)
 
     ifelse  ( xv < max-pxcor and yv < max-pycor and
               xv > min-pxcor and yv > min-pycor)[
@@ -46,9 +47,9 @@ to go
       show-turtle
       ask link-set [my-links] of self
       [
-        let lk self
+        let chosenLink self
         ask other-end
-        [ if ( color = yellow) [ask lk[ show-link ] ]]
+        [ if ( color = yellow) [ask chosenLink [ show-link ] ]]
       ]
     ][
       hide-turtle
@@ -146,7 +147,7 @@ transY
 transY
 0
 5
-3.9
+2.5
 0.1
 1
 NIL
@@ -161,7 +162,7 @@ scaleX
 scaleX
 0
 10
-3.1
+4.6
 0.1
 1
 NIL
@@ -176,8 +177,23 @@ scaleY
 scaleY
 0
 10
-0.96
+2.48
 0.01
+1
+NIL
+HORIZONTAL
+
+SLIDER
+211
+462
+647
+495
+rotation
+rotation
+0
+360
+181.0
+1
 1
 NIL
 HORIZONTAL
