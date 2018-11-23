@@ -2,32 +2,64 @@ turtles-own [locX locY]
 
 to setup
   ca
+
+  ;; Reset the global variables
+  set transX 0
+  set transY 0
+  set scaleX 1
+  set scaleY 1
+  set rotation 0
+
   ask patches [
     sprout 4 [
       set shape "dot"
-      set size 0.5
-      set color white
+      set size 1
+      set color blue
       set locX xcor
       set locY ycor
     ]
   ]
 
+  ; create a directed network such that each node has a LINK-CHANCE percent chance of
+  ; having a link established from a given node to one of its neighbors
+  ask turtles [
+    let neighbor-nodes turtle-set [turtles-here] of neighbors4
+    create-links-with neighbor-nodes
+  ]
+
+  ;update-globals
+  ;update-visuals
+  reset-ticks
 end
 
 
 to go
+
   ask turtles [
-    let xv (locX * scaleX + transX)
-    let yv (locY * scaleX + transY)
-    ifelse  ( xv < max-pxcor and yv <= max-pycor)[
+
+    let xv  ( transX  + ( locX * scaleX ) * cos rotation) - ( transY  + ( locY * scaleY ) * sin rotation)
+    let yv  ( transY  + ( locY * scaleY ) * cos rotation) + ( transX  + ( locX * scaleX ) * sin rotation)
+
+    ifelse  ( xv < max-pxcor and yv < max-pycor and
+              xv > min-pxcor and yv > min-pycor)[
       setxy xv  yv
-      set color white
+      set color yellow
       show-turtle
+      ask link-set [my-links] of self
+      [
+        let chosenLink self
+        ask other-end
+        [ if ( color = yellow) [ask chosenLink [ show-link ] ]]
+      ]
     ][
       hide-turtle
-      set color yellow
+      setxy 0 0
+      set color white
+      ;;ask link-set [my-links] of self [ hide-link ]
     ]
   ]
+
+  ask link-set [my-links] of turtles with [color = white] [ hide-link ]
 end
 @#$#@#$#@
 GRAPHICS-WINDOW
@@ -44,8 +76,8 @@ GRAPHICS-WINDOW
 1
 1
 0
-1
-1
+0
+0
 1
 -30
 30
@@ -58,10 +90,10 @@ ticks
 30.0
 
 BUTTON
-101
+27
+66
 93
-167
-126
+99
 NIL
 setup
 NIL
@@ -75,10 +107,10 @@ NIL
 1
 
 BUTTON
-109
-163
-172
-196
+93
+66
+156
+99
 NIL
 go
 T
@@ -92,6 +124,7 @@ NIL
 1
 
 SLIDER
+<<<<<<< HEAD
 19
 247
 191
@@ -101,12 +134,24 @@ transX
 -10
 10
 0.0
+=======
+15
+118
+187
+151
+transX
+transX
+0
+5
+2.3
+>>>>>>> a645f80b55cf8370b78a5a411c532a9c926d355f
 0.1
 1
 NIL
 HORIZONTAL
 
 SLIDER
+<<<<<<< HEAD
 19
 279
 191
@@ -116,12 +161,24 @@ transY
 -10
 10
 0.0
+=======
+15
+152
+187
+185
+transY
+transY
+0
+5
+2.5
+>>>>>>> a645f80b55cf8370b78a5a411c532a9c926d355f
 0.1
 1
 NIL
 HORIZONTAL
 
 SLIDER
+<<<<<<< HEAD
 19
 310
 191
@@ -132,10 +189,23 @@ scaleX
 1
 0.0
 0.01
+=======
+14
+210
+186
+243
+scaleX
+scaleX
+0
+10
+4.6
+0.1
+>>>>>>> a645f80b55cf8370b78a5a411c532a9c926d355f
 1
 NIL
 HORIZONTAL
 
+<<<<<<< HEAD
 BUTTON
 30
 165
@@ -152,6 +222,37 @@ NIL
 NIL
 NIL
 1
+=======
+SLIDER
+14
+243
+186
+276
+scaleY
+scaleY
+0
+10
+2.48
+0.01
+1
+NIL
+HORIZONTAL
+
+SLIDER
+211
+462
+647
+495
+rotation
+rotation
+0
+360
+181.0
+1
+1
+NIL
+HORIZONTAL
+>>>>>>> a645f80b55cf8370b78a5a411c532a9c926d355f
 
 @#$#@#$#@
 ## WHAT IS IT?
