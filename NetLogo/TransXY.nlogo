@@ -3,7 +3,7 @@ turtles-own [locX locY]
 to setup
   ca
   ask patches [
-    sprout 1 [
+    sprout 4 [
       set shape "dot"
       set size 0.5
       set color white
@@ -33,8 +33,8 @@ end
 GRAPHICS-WINDOW
 210
 10
-647
-448
+1011
+812
 -1
 -1
 13.0
@@ -47,10 +47,10 @@ GRAPHICS-WINDOW
 1
 1
 1
--16
-16
--16
-16
+-30
+30
+-30
+30
 0
 0
 1
@@ -92,49 +92,66 @@ NIL
 1
 
 SLIDER
-18
-244
-190
-277
+19
+247
+191
+280
 transX
 transX
-1
-5
-1.0
-0.1
-1
-NIL
-HORIZONTAL
-
-SLIDER
-21
-289
-193
-322
-transY
-transY
-1
-5
-1.0
-0.1
-1
-NIL
-HORIZONTAL
-
-SLIDER
-22
-357
-194
-390
-scaleX
-scaleX
-0.01
+-10
 10
-0.91
+0.0
 0.1
 1
 NIL
 HORIZONTAL
+
+SLIDER
+19
+279
+191
+312
+transY
+transY
+-10
+10
+0.0
+0.1
+1
+NIL
+HORIZONTAL
+
+SLIDER
+19
+310
+191
+343
+scaleX
+scaleX
+0
+1
+0.0
+0.01
+1
+NIL
+HORIZONTAL
+
+BUTTON
+30
+165
+93
+198
+NIL
+go
+NIL
+1
+T
+OBSERVER
+NIL
+NIL
+NIL
+NIL
+1
 
 @#$#@#$#@
 ## WHAT IS IT?

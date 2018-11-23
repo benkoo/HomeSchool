@@ -13,16 +13,16 @@ end
 to draw-walls
 
   ask patches with [abs pxcor = max-pxcor]
-    [ set pcolor blue ]
+    [ set pcolor red ]
 
   ask patches with [abs pycor = max-pycor]
-    [ set pcolor blue ]
+    [ set pcolor red ]
 end
 
 
 to randomize
   setxy random-xcor random-ycor
-  if pcolor = blue
+  if pcolor = red
     [ randomize ]
 end
 
@@ -164,7 +164,7 @@ ml
 ml
 1
 100
-2.0
+1.0
 1
 1
 NIL
@@ -179,7 +179,7 @@ ml
 ml
 0
 1000
-2.0
+1.0
 1
 1
 d
@@ -194,7 +194,7 @@ ml
 ml
 0
 10
-2.0
+1.0
 1
 1
 NIL
@@ -209,11 +209,21 @@ ml
 ml
 0
 10000
-2.0
+1.0
 1
 1
 NIL
 HORIZONTAL
+
+CHOOSER
+13
+520
+151
+565
+mls
+mls
+"180" "180.5"
+0
 
 @#$#@#$#@
 ## WHAT IS IT?
