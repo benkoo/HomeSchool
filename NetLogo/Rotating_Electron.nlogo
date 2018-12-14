@@ -38,23 +38,9 @@ to rotateElectron [turtleNumber angleDiff angleRatio]
     set angle ( angle +  angleDiff )
     setxy cos angle * w sin angle *  angleRatio
   ]
+
 end
 
-to righto0
-
-  ask turtle 0 [
-    set angle ( angle +  0.10 )
-    setxy cos angle * w sin angle *  3
-  ]
-end
-
-to righto1
-
-  ask turtle 1 [
-    set angle ( angle -  0.10 )
-    setxy cos angle * w sin angle *  5
-  ]
-end
 
 to righto2
 
@@ -197,7 +183,7 @@ y
 y
 0
 10
-6.0
+7.0
 1
 1
 NIL
