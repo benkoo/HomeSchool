@@ -43,13 +43,13 @@ to go
     ifelse  ( xv < max-pxcor and yv < max-pycor and
               xv > min-pxcor and yv > min-pycor)[
       setxy xv  yv
-      set color yellow
+      set color cyan
       show-turtle
       ask link-set [my-links] of self
       [
         let chosenLink self
         ask other-end
-        [ if ( color = yellow) [ask chosenLink [ show-link ] ]]
+        [ if ( color = cyan) [ask chosenLink [ show-link ] ]]
       ]
     ][
       hide-turtle
@@ -132,7 +132,7 @@ transX
 transX
 0
 5
-2.3
+1.3
 0.1
 1
 NIL
@@ -147,7 +147,7 @@ transY
 transY
 0
 5
-2.5
+0.0
 0.1
 1
 NIL
@@ -162,7 +162,7 @@ scaleX
 scaleX
 0
 10
-4.6
+1.0
 0.1
 1
 NIL
@@ -177,7 +177,7 @@ scaleY
 scaleY
 0
 10
-2.48
+1.0
 0.01
 1
 NIL
@@ -192,7 +192,7 @@ rotation
 rotation
 0
 360
-181.0
+119.0
 1
 1
 NIL
