@@ -17,7 +17,7 @@ to setup
   ]
 end
 
-to righto
+to go
    righto0
    righto1
    righto2
@@ -38,7 +38,7 @@ to righto0
 
   ask turtle 0 [
     set angle ( angle +  0.10 )
-    setxy cos angle * w sin angle *  3
+    setxy cos angle * w sin angle *  1
   ]
 end
 
@@ -54,7 +54,7 @@ to righto2
 
   ask turtle 2 [
     set angle ( angle +  0.10 )
-    setxy cos angle *  w sin angle *  10
+    setxy cos angle * w sin angle *  10
   ]
 end
 
@@ -62,7 +62,7 @@ to righto3
 
   ask turtle 3 [
     set angle ( angle -  0.10 )
-    setxy cos angle *  0 sin angle *  y
+    setxy cos angle *  1 sin angle *  y
   ]
 end
 
@@ -70,7 +70,7 @@ to righto4
 
   ask turtle 4 [
     set angle ( angle +  0.10 )
-    setxy cos angle *  2 sin angle *  y
+    setxy cos angle *  5 sin angle *  y
   ]
 end
 
@@ -78,14 +78,7 @@ to righto5
 
   ask turtle 5 [
     set angle ( angle -  0.10 )
-    setxy cos angle *  8 sin angle *  y
-  ]
-end
-
-to lefto
-  ask turtles [
-    set angle ( angle + 10 )
-    setxy cos angle * w  sin angle * y
+    setxy cos angle *  10 sin angle *  y
   ]
 end
 @#$#@#$#@
@@ -134,29 +127,12 @@ NIL
 1
 
 BUTTON
-31
-108
-177
-141
-counter-clockwise
-lefto
-T
-1
-T
-OBSERVER
-NIL
-A
-NIL
-NIL
-1
-
-BUTTON
 92
 221
 182
 254
 clockwise
-righto
+go
 T
 1
 T
@@ -176,7 +152,7 @@ w
 w
 0
 10
-9.0
+10.0
 1
 1
 NIL
@@ -191,7 +167,7 @@ y
 y
 0
 10
-9.0
+3.0
 1
 1
 NIL
@@ -207,6 +183,26 @@ leave-trace?
 0
 1
 -1000
+
+TEXTBOX
+972
+223
+1122
+241
+NIL
+11
+0.0
+1
+
+TEXTBOX
+919
+214
+1069
+232
+NIL
+11
+0.0
+1
 
 @#$#@#$#@
 ## WHAT IS IT?
