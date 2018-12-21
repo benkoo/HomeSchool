@@ -17,15 +17,9 @@ to setup
   ]
 end
 
-<<<<<<< HEAD
-to go
-   righto0
-   righto1
-=======
 to righto
    rotateElectron 0 0.1 3
    rotateElectron 0 -0.1 5
->>>>>>> 760c6526d2d1f5dedce236c4daee880080d23c85
    righto2
    righto3
    righto4
@@ -44,29 +38,15 @@ to rotateElectron [turtleNumber angleDiff angleRatio]
     set angle ( angle +  angleDiff )
     setxy cos angle * w sin angle *  angleRatio
   ]
+
 end
 
-to righto0
-
-  ask turtle 0 [
-    set angle ( angle +  0.10 )
-    setxy cos angle * w sin angle *  1
-  ]
-end
-
-to righto1
-
-  ask turtle 1 [
-    set angle ( angle -  0.10 )
-    setxy cos angle * w sin angle *  5
-  ]
-end
 
 to righto2
 
   ask turtle 2 [
     set angle ( angle +  0.10 )
-    setxy cos angle * w sin angle *  10
+    setxy cos angle *  w sin angle *  10
   ]
 end
 
@@ -74,7 +54,7 @@ to righto3
 
   ask turtle 3 [
     set angle ( angle -  0.10 )
-    setxy cos angle *  1 sin angle *  y
+    setxy cos angle *  0 sin angle *  y
   ]
 end
 
@@ -82,7 +62,7 @@ to righto4
 
   ask turtle 4 [
     set angle ( angle +  0.10 )
-    setxy cos angle *  5 sin angle *  y
+    setxy cos angle *  2 sin angle *  y
   ]
 end
 
@@ -90,7 +70,14 @@ to righto5
 
   ask turtle 5 [
     set angle ( angle -  0.10 )
-    setxy cos angle *  10 sin angle *  y
+    setxy cos angle *  8 sin angle *  y
+  ]
+end
+
+to lefto
+  ask turtles [
+    set angle ( angle + 10 )
+    setxy cos angle * w  sin angle * y
   ]
 end
 @#$#@#$#@
@@ -139,12 +126,29 @@ NIL
 1
 
 BUTTON
+31
+108
+177
+141
+counter-clockwise
+lefto
+T
+1
+T
+OBSERVER
+NIL
+A
+NIL
+NIL
+1
+
+BUTTON
 92
 221
 182
 254
 clockwise
-go
+righto
 T
 1
 T
@@ -164,11 +168,7 @@ w
 w
 0
 10
-<<<<<<< HEAD
-10.0
-=======
 6.0
->>>>>>> 760c6526d2d1f5dedce236c4daee880080d23c85
 1
 1
 NIL
@@ -183,11 +183,7 @@ y
 y
 0
 10
-<<<<<<< HEAD
-3.0
-=======
-6.0
->>>>>>> 760c6526d2d1f5dedce236c4daee880080d23c85
+7.0
 1
 1
 NIL
@@ -203,26 +199,6 @@ leave-trace?
 0
 1
 -1000
-
-TEXTBOX
-972
-223
-1122
-241
-NIL
-11
-0.0
-1
-
-TEXTBOX
-919
-214
-1069
-232
-NIL
-11
-0.0
-1
 
 @#$#@#$#@
 ## WHAT IS IT?
