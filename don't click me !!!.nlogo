@@ -1,114 +1,40 @@
-
-;;;;;;;;;;;;;;;;;;;;;;;;
-;;; Setup Procedures ;;;
-;;;;;;;;;;;;;;;;;;;;;;;;
-
-to setup
+to startup
   ca
-  ;; create the ground
-  create-floor
-  ;; create the cover bodies
-  create-wall
-  ;; create the center dot so player can have
-  ;; a better sense of direction
-  ask patches with [pxcor = 0 and pycor = 0 and pzcor = min-pzcor + 3][
-    set pcolor yellow
+  user-message "I told you not to click!"
+  if user-yes-or-no? "oh, well. Do you want to enter?" [
+    ifelse user-yes-or-no? "do you REALLY want to enter?" [
+      ifelse user-yes-or-no? "are you sure?" [
+        ifelse user-yes-or-no? "really sure?" [
+          user-message "ok, fine"
+          user-message "I'm gonna ask you ONE LAST TIME"
+          while [ user-yes-or-no? "do you want to open this?" ] [
+            user-message "wrong answer! choose again"
+          ]
+        ]
+        [ user-message "ok, bye!" ]
+      ]
+      [ user-message "ok, bye!"]
+    ]
+    [ user-message "ok, bye!" ]
   ]
+  user-message "ok, bye!"
   crt 1 [
-    setxyz 0 0 min-pzcor + 1
-    set heading 0
-    set color red
-    set size 1
-  ]
-  ride turtle 0
-  reset-ticks
-end
-
-to create-floor
-  ;; create the grass
-  ask patches with [pzcor = min-pzcor][
-    ;; randomize the color of the grass
-    ;; to make it look more real
-    set pcolor (green + random-float 1)- 1
-  ]
-  ;; create the border
-  ask patches with [pzcor = min-pzcor + 1 and
-    (pxcor = max-pxcor or pxcor = min-pxcor or pycor = max-pycor or pycor = min-pycor)
-  ][
-    set pcolor grey
+    set color black
+    setxy 0 0
+    set label "nothing here."
   ]
 end
-
-to create-wall
-  ;; create the cover bodies
-  ask patches with [
-    ;; randomize their position
-    pzcor = min-pzcor + 1 and ((pxcor = random max-pxcor and pxcor != 0) or (pycor = random max-pycor and pycor != 0))
-  ][
-    set pcolor grey
-  ]
-end
-
-;;;;;;;;;;;;;;;;;;;;;;;;;
-;;; Moving Procedures ;;;
-;;;;;;;;;;;;;;;;;;;;;;;;;
-
-; rotion procedures are directly
-; coded in the two "rotate" buttons
-; since it is very short
-
-to go-forward
-  ask turtle 0 [
-    ;; check if it is blocked by a cover bodie
-    if [pcolor] of patch-ahead 1 != grey [
-      ;; make it move snap to grid
-      setxyz [pxcor] of patch-ahead 1 [pycor] of patch-ahead 1 [pzcor] of patch-ahead 1
-    ]
-  ]
-end
-
-to go-back
-  ask turtle 0 [
-    ;; check if it is blocked by a cover bodie
-    if [pcolor] of patch-ahead -1 != grey [
-      ;; make it move snap to grid
-      setxyz [pxcor] of patch-ahead -1 [pycor] of patch-ahead -1 [pzcor] of patch-ahead -1
-    ]
-  ]
-end
-
-to go-left
-  ask turtle 0 [
-    ;; check if it is blocked by a cover bodie
-    if [pcolor] of patch-left-and-ahead 90 1 != grey [
-      ;; make it move snap to grid
-      setxyz [pxcor] of patch-left-and-ahead 90 1 [pycor] of patch-left-and-ahead 90 1 [pzcor] of patch-left-and-ahead 90 1
-    ]
-  ]
-end
-
-to go-right
-  ask turtle 0 [
-    ;; check if it is blocked by a cover bodie
-    if [pcolor] of patch-right-and-ahead 90 1 != grey [
-      ;;; make it move snap to grid
-      setxyz [pxcor] of patch-right-and-ahead 90 1 [pycor] of patch-right-and-ahead 90 1 [pzcor] of patch-right-and-ahead 90 1
-    ]
-  ]
-end
-
-; Copyright 2018 Kevin Tang.
 @#$#@#$#@
 GRAPHICS-WINDOW
-0
-0
-437
-438
+210
+10
+647
+448
 -1
 -1
 13.0
 1
-10
+20
 1
 1
 1
@@ -120,226 +46,14 @@ GRAPHICS-WINDOW
 16
 -16
 16
--5
-5
-1
+0
 0
 1
 ticks
 30.0
 
-BUTTON
-115
-10
-181
-43
-NIL
-setup
-NIL
-1
-T
-OBSERVER
-NIL
-NIL
-NIL
-NIL
-1
-
-BUTTON
-52
-129
-144
-162
-rotate left
-ask turtle 0 [ set heading heading - 45 ]
-NIL
-1
-T
-OBSERVER
-NIL
-A
-NIL
-NIL
-0
-
-BUTTON
-144
-129
-246
-162
-rotate right
-ask turtle 0 [ set heading heading + 45 ]
-NIL
-1
-T
-OBSERVER
-NIL
-D
-NIL
-NIL
-0
-
-BUTTON
-77
-174
-215
-207
-reset perspective
-reset-perspective
-NIL
-1
-T
-OBSERVER
-NIL
-NIL
-NIL
-NIL
-1
-
-BUTTON
-74
-207
-218
-240
-player perspective
-ride turtle 0
-NIL
-1
-T
-OBSERVER
-NIL
-NIL
-NIL
-NIL
-0
-
-BUTTON
-107
-54
-187
-87
-forward
-go-forward
-NIL
-1
-T
-OBSERVER
-NIL
-I
-NIL
-NIL
-0
-
-BUTTON
-90
-87
-200
-120
-backward
-go-back
-NIL
-1
-T
-OBSERVER
-NIL
-K
-NIL
-NIL
-0
-
-BUTTON
-9
-87
-90
-120
-leftward
-go-left
-NIL
-1
-T
-OBSERVER
-NIL
-J
-NIL
-NIL
-0
-
-BUTTON
-200
-87
-292
-120
-rightward
-go-right
-NIL
-1
-T
-OBSERVER
-NIL
-L
-NIL
-NIL
-0
-
 @#$#@#$#@
-## WHAT IS IT?
-
-This is 3D 1 player game. It is used to practice 3D coding.
-
-## HOW IT WORKS
-
-Main commands:
-
-* perspective
-    * reset-perspective
-    * ride
-
-
-## HOW TO USE IT
-
-Buttons:
-
-* setup
-* forward
-* backward
-* leftward
-* rightward
-* rotate left
-* rotate right
-* reset perspective
-* player perspective
-
-To start, first press the "setup" button. It will generate a battle field with grass ground and random cover bodies, and walls around the edges. The player will apere in the center of this word. You will be riding the player. There will be a yellow cube right above the player in the center, so you can have better sense of direction.
-You can look around with the "rotate" buttons, and move with moving buttons too. The player is being snaped on the grid.
-You can reset perspective by hitting the "reset perspective" button, and chage back to riding player by hitting the "player perspective" button.
-
-## THINGS TO NOTICE
-
-If you want to change it, **PLEASE MAKE A COPY !!!**
-
-You cannot look up or down, nor jump onto cover bodies, nor go "inside" it, nor go out of the boarder.
-
-## THINGS TO TRY
-
-Have a look around, explore this world, and have fun!
-
-## EXTENDING THE MODEL
-
-This model is made only for practice, and there really is no goal in the game. You can add things to do, objects to find, enemies to fight, etc.
-
-## NETLOGO FEATURES
-
-I want to create a multi-player 3d game, but because hubnet is not useable in 3d, that can't come true. (>_<)
-
-## RELATED MODELS
-
-"Airplane Landing Example 3D" in models library
-
-## CREDITS AND REFERENCES
-
-Made by Kevin Tang
-
-Copyright 2018 KevinTang
+# I told you there is nothing!!!
 @#$#@#$#@
 default
 true
@@ -646,9 +360,8 @@ false
 Polygon -7500403 true true 270 75 225 30 30 225 75 270
 Polygon -7500403 true true 30 75 75 30 270 225 225 270
 @#$#@#$#@
-NetLogo 3D 6.0.4
+NetLogo 6.0.4
 @#$#@#$#@
-need-to-manually-make-preview-for-this-model
 @#$#@#$#@
 @#$#@#$#@
 @#$#@#$#@
