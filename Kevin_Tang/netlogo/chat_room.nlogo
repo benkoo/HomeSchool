@@ -1,9 +1,8 @@
 to startup
   hubnet-reset
-end
-
-to go
-  listen-clients
+  loop [
+    listen-clients
+  ]
 end
 
 to listen-clients
@@ -52,59 +51,52 @@ GRAPHICS-WINDOW
 ticks
 30.0
 
-BUTTON
-80
-46
-143
-79
-NIL
-go
-T
-1
-T
-OBSERVER
-NIL
-NIL
-NIL
-NIL
+TEXTBOX
+301
+193
+579
+243
+ckeck the info tab
+30
+9.9
 1
 
 @#$#@#$#@
 ## WHAT IS IT?
 
-(a general understanding of what the model is trying to show or explain)
+This is a hubnet chat room.
 
 ## HOW IT WORKS
 
-(what rules the agents use to create the overall behavior of the model)
+It uses Input and hubnet.
 
 ## HOW TO USE IT
 
-(how to use the model, including a description of each of the items in the Interface tab)
+Open up a hubnet client interface. There will be a input called "message". Tye in what you want to say, then it will apeare on the text area, which can be seen by everyone else.
 
 ## THINGS TO NOTICE
 
-(suggested things for the user to notice while running the model)
+There are no buttons in this model. The program starts to run when you open it.
 
 ## THINGS TO TRY
 
-(suggested things for the user to try to do (move sliders, switches, etc.) with the model)
+Type what you want to say.
 
 ## EXTENDING THE MODEL
 
-(suggested things to add or change in the Code tab to make the model more complicated, detailed, accurate, etc.)
+You can add this in other hubnet models, like games, so plyers can communicate with each other.
 
 ## NETLOGO FEATURES
 
-(interesting or unusual features of NetLogo that the model uses, particularly in the Code tab; or where workarounds were needed for missing features)
+Hubnet.
 
 ## RELATED MODELS
 
-(models in the NetLogo Models Library and elsewhere which are of related interest)
+null
 
 ## CREDITS AND REFERENCES
 
-(a reference to the model's URL on the web if it has one, as well as any other necessary credits, citations, and links)
+Copyright Kevin Tang 2019
 @#$#@#$#@
 default
 true
