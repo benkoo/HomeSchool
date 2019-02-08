@@ -1,8 +1,9 @@
 to startup
   hubnet-reset
-  loop [
-    listen-clients
-  ]
+end
+
+to go
+  listen-clients
 end
 
 to listen-clients
@@ -25,15 +26,15 @@ to execute-command
 end
 @#$#@#$#@
 GRAPHICS-WINDOW
-210
-10
-647
-448
+329
+217
+337
+226
 -1
 -1
-13.0
+0.0
 1
-10
+20
 1
 1
 1
@@ -41,24 +42,41 @@ GRAPHICS-WINDOW
 1
 1
 1
--16
-16
--16
-16
+0
+0
+0
+0
 0
 0
 1
 ticks
-30.0
+1.0
 
 TEXTBOX
-301
-193
-579
-243
-ckeck the info tab
-30
-9.9
+282
+245
+385
+263
+click the go button
+11
+0.0
+1
+
+BUTTON
+300
+198
+363
+231
+NIL
+go
+T
+1
+T
+OBSERVER
+NIL
+NIL
+NIL
+NIL
 1
 
 @#$#@#$#@
